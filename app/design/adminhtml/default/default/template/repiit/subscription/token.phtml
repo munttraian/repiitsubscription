@@ -1,13 +1,16 @@
 <?php
 $user = Mage::getStoreConfig('repiitsubscription/general/partener_id');
 $pass = Mage::getStoreConfig('repiitsubscription/general/key');
+$result = Mage::getModel('repiit_subscription/api')->getResultUsername($user);
+$result = trim($result,'"');
 ?>
 <script>
 
     var repiit_token_cookie = getCookie('repiit_token');
 
     if (!repiit_token_cookie) {
-        var result = 'nM5aiFNUeWL9icb56akttLsO7NomSJoqS/L2+wpi594y:testIP';
+        //var result = 'nM5aiFNUeWL9icb56akttLsO7NomSJoqS/L2+wpi594y:testIP';
+        var result = '<?php echo $result ?>';
         var pass = '<?php echo $pass ?>';
         var user = '<?php echo $user ?>';
         var ticks = (new Date().getTime() * 10000) + 621355968000000000;

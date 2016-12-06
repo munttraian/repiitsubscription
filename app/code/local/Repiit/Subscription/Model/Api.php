@@ -44,7 +44,6 @@ class Repiit_Subscription_Model_Api
             CURLOPT_HTTPHEADER => array(
                 "authorization: $key",
                 "cache-control: no-cache",
-                "postman-token: 6def1705-5d6b-fa5e-6f4f-33b3d368e7f1",
                 "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
             ),
         ));
@@ -82,7 +81,6 @@ class Repiit_Subscription_Model_Api
             CURLOPT_HTTPHEADER => array(
                 "authorization: $key",
                 "cache-control: no-cache",
-                "postman-token: f9a9fa38-150c-9ec6-6771-03624f4bbc75",
                 "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
             ),
             CURLOPT_POST => 1,
@@ -121,7 +119,6 @@ class Repiit_Subscription_Model_Api
             CURLOPT_HTTPHEADER => array(
                 "authorization: $key",
                 "cache-control: no-cache",
-                "postman-token: 6def1705-5d6b-fa5e-6f4f-33b3d368e7f1",
                 "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
             ),
         ));
@@ -161,7 +158,6 @@ class Repiit_Subscription_Model_Api
                 "authorization: $key",
                 "cache-control: no-cache",
                 "content-type: application/json",
-                "postman-token: 9b7891ce-9bf9-9a2a-a227-9e7b262fe7a5",
                 "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
             ),
         ));
@@ -214,6 +210,21 @@ class Repiit_Subscription_Model_Api
         $ret = $this->curlPost($apiUrl, $key);
 
         return $ret;
+    }
+
+    //get result for username
+    /**
+     *
+     * @param string $username
+     * @return string
+     */
+    public function getResultUsername($username)
+    {
+        $apiUrl = $this->getApiUrl() . "Login?username=" . rawurlencode($username);
+
+        $result = $this->curlGet($apiUrl,'');
+
+        return $result;
     }
 
 }
