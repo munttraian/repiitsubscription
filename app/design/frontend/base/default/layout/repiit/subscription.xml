@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <customer_logged_in>
+        <reference name="top.links">
+            <action method="addLink" translate="label title" module="Repiit_Subscription"><label>Subscriptions</label><url helper="Repiit_Subscription/getSubscriptionUrl"/><title>Log Out</title><prepare/><urlParams/><position>90</position></action>
+        </reference>
+    </customer_logged_in>
+
+    <customer_account>
+        <reference name="customer_account_navigation">
+        <action method="addLink" translate="label" module="Repiit_Subscription"><name>subscritions</name><path>repiitsubscription/index/</path><label>Subscriptions</label></action>
+        </reference>
+    </customer_account>
+
+    <catalog_product_view>
+            <reference name="product.info">
+                <block type="repiit_subscription/product" name="repiit.subscription.button" as="repiitsubscriptionbutton" template="repiit/subscription/button_subscription.phtml" />
+            </reference>
+    </catalog_product_view>
+</layout>

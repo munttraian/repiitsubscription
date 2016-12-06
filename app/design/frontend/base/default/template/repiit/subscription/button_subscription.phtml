@@ -1,0 +1,41 @@
+<?php
+    $_product = Mage::registry('current_product');
+
+    if ($_product->getSubscriptionActiv()) :
+
+        $_helper = $this->helper('catalog/output');
+
+        $buttonTitle = 'Subscribe';
+
+?>
+<?php if($_additional = $this->getSubscriptionData()): ?>
+    <div class="product-essential">
+        <h3><?php echo $this->__('Subscription Information') ?></h3>
+        <table class="data-table" id="product-attribute-specs-table">
+            <col width="25%" />
+            <col />
+            <tbody>
+            <?php foreach ($_additional as $_data): ?>
+                <tr>
+                    <th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></th>
+                    <td class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+        <script type="text/javascript">decorateTable('product-attribute-specs-table')</script>
+    <?php endif;?>
+
+            <form action="<?php echo Mage::helper('Repiit_Subscription')->getSubscriptionUrl() ?>" method="post" id="product_subscription_form">
+                <input type="hidden" name="partenerid" id="partenerid" value="" />
+                <input type="hidden" name="key" id="key" value="" />
+
+                <input type="submit" name="submit" value="<?php echo $this->__('Subscription') ?>" />
+            </form>
+
+            <script type="text/javascript">
+                //<![CDATA[
+                var productSubscriptionForm = new VarienForm('product_subscription_form');
+            </script>
+        </div>
+<?php endif; ?>

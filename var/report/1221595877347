@@ -1,0 +1,25 @@
+a:5:{i:0;s:255:"Invalid method Mage_Adminhtml_Block_Page_Head::addExternalItem(Array
+(
+    [0] => external_js
+    [1] => http://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js
+    [2] => Mage_Core_Model_Layout_Element Object
+        (
+        )
+
+)
+)";i:1;s:2064:"#0 [internal function]: Varien_Object->__call('addExternalItem', Array)
+#1 [internal function]: Mage_Adminhtml_Block_Page_Head->addExternalItem('external_js', 'http://cdnjs.cl...', Object(Mage_Core_Model_Layout_Element))
+#2 /filespart/public_html/magento/app/code/core/Mage/Core/Model/Layout.php(348): call_user_func_array(Array, Array)
+#3 /filespart/public_html/magento/app/code/core/Mage/Core/Model/Layout.php(214): Mage_Core_Model_Layout->_generateAction(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#4 /filespart/public_html/magento/app/code/core/Mage/Core/Model/Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#5 /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php(344): Mage_Core_Model_Layout->generateBlocks()
+#6 /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#7 /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Controller/Action.php(275): Mage_Core_Controller_Varien_Action->loadLayout(NULL, true, true)
+#8 /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/CacheController.php(46): Mage_Adminhtml_Controller_Action->loadLayout()
+#9 /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Mage_Adminhtml_CacheController->indexAction()
+#10 /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#11 /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#12 /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#13 /filespart/public_html/magento/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#14 /filespart/public_html/magento/index.php(83): Mage::run('', 'store')
+#15 {main}";s:3:"url";s:66:"/index.php/admin/cache/index/key/eeffa908f8097941c9fe2c03ad2b919a/";s:11:"script_name";s:10:"/index.php";s:4:"skin";s:5:"admin";}
