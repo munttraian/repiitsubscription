@@ -7,6 +7,7 @@ $result = trim($result,'"');
 <script>
 
     var repiit_token_cookie = getCookie('repiit_token');
+    var repiit_useragent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36';
 
     if (!repiit_token_cookie) {
         //var result = 'nM5aiFNUeWL9icb56akttLsO7NomSJoqS/L2+wpi594y:testIP';
@@ -17,7 +18,8 @@ $result = trim($result,'"');
         var arrayOfResult = result.split(":");
         var passwordHash = CryptoJS.HmacSHA256(arrayOfResult[0], [pass, arrayOfResult[0]].join(":"));
         var passwordToken = CryptoJS.enc.Base64.stringify(passwordHash);
-        var hash = CryptoJS.HmacSHA256([user, arrayOfResult[1], navigator.userAgent.replace(/ \.NET.+;/, ''), ticks].join(":"), passwordToken);
+        //var hash = CryptoJS.HmacSHA256([user, arrayOfResult[1], navigator.userAgent.replace(/ \.NET.+;/, ''), ticks].join(":"), passwordToken);
+        var hash = CryptoJS.HmacSHA256([user, arrayOfResult[1], repiit_useragent.replace(/ \.NET.+;/, ''), ticks].join(":"), passwordToken);
         var tokenLeft = CryptoJS.enc.Base64.stringify(hash);
         var combinedToken = [tokenLeft, [user, ticks].join(":")].join(":");
         var finalToken = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(combinedToken));
