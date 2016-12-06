@@ -1,5 +1,7 @@
 .idea
 .htaccess.sample
 .htaccess
-tests
-var
+tests/
+var/log/*
+var/cache/*
+var/session/*
