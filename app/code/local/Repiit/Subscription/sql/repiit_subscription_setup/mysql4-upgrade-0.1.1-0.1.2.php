@@ -18,7 +18,7 @@ $setup->addAttribute('catalog_product', 'subscription_id', array(
     'backend' => '',
     'frontend' => '',
     'label' => "Subscription Id",
-    'input' => 'text',    // "text" for input type text box
+    'input' => 'label',    // "text" for input type text box
     'class' => '',
     'source' => '',            // Leave blank for input type text box
     'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,

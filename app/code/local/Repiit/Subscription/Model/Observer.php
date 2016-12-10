@@ -28,14 +28,15 @@ class Repiit_Subscription_Model_Observer
                 $ret = ""; //api return code
 
                 $postData = array(
-                    "itemNumber" => $data['sku'],
-                    "itemText" => $data['name'],
-                    "price" => $data['subscription_price'],
-                    "ruleID" => "02",
-                    "costPrice" => 1,
-                    "unit" => 1,
-                    "deliverytime" => 7,//$data['subscription_deliverytime'],
-                    "supplier" => $product->getAttributeText('manufacturer')
+                    "ITEMNUMBER" => $data['sku'],
+                    "ITEMTXT" => $data['name'],
+                    "ITEMTEXT" => $data['name'],
+                    "PRICE" => $data['subscription_price'],
+                    "RULEID" => "02",
+                    "COSTPRICE" => 1,
+                    "UNIT" => 1,
+                    "DELIVERYTIME" => 7,//$data['subscription_deliverytime'],
+                    "SUPPLIER" => $product->getAttributeText('manufacturer')
                 );
 
                 if ($data['subscription_id'])
@@ -48,7 +49,10 @@ class Repiit_Subscription_Model_Observer
 
                     $jsonData = json_encode($postData);
 
+                    $ret = Mage::getModel('repiit_subscription/api_item')->modifyItem($jsonData);
+
                     Mage::log($jsonData);
+                    Mage::log($ret);
                 }
                 else
                 {

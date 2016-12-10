@@ -92,4 +92,11 @@
             </updates>
         </layout>
     </adminhtml>
+    <default>
+        <repiitsubscription>
+            <api>
+                <js_selector_config>ul.configurable-swatch-list li a</js_selector_config>
+            </api>
+        </repiitsubscription>
+    </default>
 </config>

@@ -1,7 +1,8 @@
 <?php
     $_product = Mage::registry('current_product');
+    $helper = Mage::helper('Repiit_Subscription');
 
-    if ($_product->getSubscriptionActiv()) :
+    if ($_product->getSubscriptionActiv() || $helper->childrenHasSubscriptionActiv($_product)) :
 
         $_helper = $this->helper('catalog/output');
 
@@ -9,7 +10,7 @@
 
 ?>
 <?php if($_additional = $this->getSubscriptionData()): ?>
-    <div class="product-essential">
+    <div class="product-shop" id="product-subscription-wrapper">
         <h3><?php echo $this->__('Subscription Information') ?></h3>
         <table class="data-table" id="product-attribute-specs-table">
             <col width="25%" />
@@ -17,8 +18,12 @@
             <tbody>
             <?php foreach ($_additional as $_data): ?>
                 <tr>
-                    <th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></th>
-                    <td class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+                    <th class="label">
+                        <?php echo $this->escapeHtml($this->__($_data['label'])) ?>
+                    </th>
+                    <td class="data">
+                        <span id="repiitsubscripiton_attr_<?php echo $_data['code'] ?>"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></span>
+                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
@@ -30,7 +35,7 @@
                 <input type="hidden" name="partenerid" id="partenerid" value="" />
                 <input type="hidden" name="key" id="key" value="" />
 
-                <input type="submit" name="submit" value="<?php echo $this->__('Subscription') ?>" />
+                <button type="submit" name="submit" class="button btn-cart" id="button_subscriptionrepiit" <?php echo ($_additional['subscription_activ']['value'] == 'Yes')?'':'disabled' ?>><?php echo $this->__('Subscribe') ?></button>
             </form>
 
             <script type="text/javascript">
@@ -38,4 +43,70 @@
                 var productSubscriptionForm = new VarienForm('product_subscription_form');
             </script>
         </div>
+<?php endif; ?>
+
+<?php
+if ($_product->getTypeId() == 'configurable') :
+?>
+
+    <script>
+        var SubscriptionProducts = <?php echo str_replace('"','\'',$this->getSubscriptionDataConfigurable()) ?>;
+    </script>
+
+<script>
+    function getSimpleProductId() {
+        var productCandidates = [];
+        jQuery.each(spConfig.settings, function (selectIndex, select) {
+            var attributeId = select.id.replace('attribute', '');
+            var selectedValue = select.options[select.selectedIndex].value;
+
+            jQuery.each(spConfig.config.attributes[attributeId].options, function(optionIndex, option) {
+                if (option.id == selectedValue) {
+                    var optionProducts = option.products;
+
+                    if (productCandidates.length == 0) {
+                        productCandidates = optionProducts;
+                    } else {
+                        var productIntersection = [];
+                        jQuery.each(optionProducts, function (productIndex, productId) {
+                            if (productCandidates.indexOf(productId) > -1) {
+                                productIntersection.push(productId);
+                            }
+                        });
+                        productCandidates = productIntersection;
+                    }
+                }
+            });
+        });
+        return (productCandidates.length == 1) ? productCandidates[0] : null;
+    }
+
+
+    jQuery(document).ready(function() {
+        jQuery("<?php echo Mage::getStoreConfig('repiitsubscription/api/js_selector_config') ?>").on('click', function() {
+            // Your code here
+            var simpleId = getSimpleProductId();
+
+            var simpleSubscriptionProduct = SubscriptionProducts[simpleId];
+
+            if (simpleSubscriptionProduct)
+            {
+                for (var key in simpleSubscriptionProduct)
+                {
+
+                    jQuery('#repiitsubscripiton_attr_' + key).html(simpleSubscriptionProduct[key].value);
+
+                }
+
+                if (simpleSubscriptionProduct['subscription_activ'].value == 'Yes') jQuery('#button_subscriptionrepiit').attr('disabled', false);
+                else jQuery('#button_subscriptionrepiit').attr('disabled', true);
+            }
+            else
+            {
+                jQuery('#button_subscriptionrepiit').attr('disabled', true);
+            }
+
+        });
+    });
+</script>
 <?php endif; ?>

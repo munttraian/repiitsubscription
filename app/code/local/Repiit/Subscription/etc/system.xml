@@ -33,7 +33,7 @@
                         </partener_id>
                         <key translate="label">
                             <label>Key</label>
-                            <frontend_type>text</frontend_type>
+                            <frontend_type>password</frontend_type>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -56,6 +56,14 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </redirect_url>
+                        <js_selector_config translate="label">
+                            <label>Js path selector for configurable products</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </js_selector_config>
                     </fields>
                 </api>
             </groups>

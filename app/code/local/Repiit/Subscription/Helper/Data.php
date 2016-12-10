@@ -131,6 +131,22 @@ class Repiit_Subscription_Helper_Data extends Mage_Core_Helper_Abstract {
 
         return 0;
     }
+
+    //check if children has subscription activ
+    public function childrenHasSubscriptionActiv($product)
+    {
+        if ($product->getTypeId() != 'configurable') return false;
+
+        $childProductsIds = $product->getTypeInstance()->getUsedProductIds();
+
+        foreach ($childProductsIds as $simpleId)
+        {
+            $sProduct = Mage::getModel('catalog/product')->load($simpleId);
+            if ($sProduct->getData('subscription_activ')) return true;
+        }
+
+        return false;
+    }
 }
 
 ?>
