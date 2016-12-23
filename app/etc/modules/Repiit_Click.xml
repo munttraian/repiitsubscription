@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Repiit_Click>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Catalog/>
+                <Mage_Customer/>
+            </depends>
+        </Repiit_Click>
+    </modules>
+</config>

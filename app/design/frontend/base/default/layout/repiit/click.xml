@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <customer_logged_in>
+        <reference name="top.links">
+            <action method="addLink" translate="label title" module="Repiit_Click"><label>Repiit Credits</label><url helper="Repiit_Click/getRepiitCreditsUrl"/><title>Repiit Credits</title><prepare/><urlParams/><position>90</position></action>
+        </reference>
+    </customer_logged_in>
+
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="Repiit_Click"><name>repiitcredits</name><path>repiitclick/index/</path><label>Repiit Credits</label></action>
+        </reference>
+    </customer_account>
+
+    <repiit_click_index_index>
+        <update handle="customer_account" />
+        <reference name="content">
+            <block type="repiit_click/creditslist" name="creditslist" as="creditslist" template="repiit/click/credits.phtml" />
+        </reference>
+    </repiit_click_index_index>
+</layout>
