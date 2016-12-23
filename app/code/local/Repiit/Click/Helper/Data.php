@@ -55,4 +55,13 @@ class Repiit_Click_Helper_Data extends Mage_Core_Helper_Abstract {
         return Mage::getUrl('repiitclick/index');
     }
 
+    //get click/download attribute group name
+    /**
+     * @return string
+     */
+    public function getClickDownloadAttributeGroup()
+    {
+        return 'ClickDownload';
+    }
+
 }
