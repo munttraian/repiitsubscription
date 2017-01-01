@@ -25,6 +25,8 @@ class Repiit_Subscription_Model_Api_Ruleidtable extends Repiit_Subscription_Mode
 
             $ruleids = json_decode($ret,true);
 
+            if (!$ruleids || !is_array($ruleids)) return $toOptionArray;
+
             foreach ($ruleids as $ruleid)
             {
                 if (!isset($ruleid['RULEID'])) continue;

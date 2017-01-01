@@ -34,7 +34,7 @@ $setup->addAttribute('catalog_product', 'subscription_id', array(
 ));
 
 $setup->addAttribute('catalog_product', 'subscription_intervals', array(
-    'type' => 'select',        // "varchar" for input type text box
+    'type' => 'text',        // "varchar" for input type text box
     'group'     => 'Subscription',
     'backend' => '',
     'frontend' => '',

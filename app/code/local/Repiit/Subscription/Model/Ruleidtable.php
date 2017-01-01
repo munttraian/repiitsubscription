@@ -11,7 +11,12 @@ class Repiit_Subscription_Model_Ruleidtable extends Mage_Core_Model_Abstract
 
     static public function getOptionArray()
     {
-        return Mage::getModel('repiit_subscription/api_ruleidtable')->getAllRulesIds();
+        //return Mage::getModel('repiit_subscription/api_ruleidtable')->getAllRulesIds();
+
+        return array(
+            1    => Mage::helper('catalog')->__('Enabled'),
+            2   => Mage::helper('catalog')->__('Disabled')
+        );
     }
 
     /**
