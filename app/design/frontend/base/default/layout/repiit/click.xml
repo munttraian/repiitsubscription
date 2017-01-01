@@ -1,8 +1,18 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>css/repiit/click/credits.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/repiit/mobile.css</stylesheet>
+            </action>
+        </reference>
+    </default>
     <customer_logged_in>
         <reference name="top.links">
-            <action method="addLink" translate="label title" module="Repiit_Click"><label>Repiit Credits</label><url helper="Repiit_Click/getRepiitCreditsUrl"/><title>Repiit Credits</title><prepare/><urlParams/><position>90</position></action>
+            <action method="addLink" translate="label title" module="Repiit_Click"><label helper="Repiit_Click/getRepiitCreditsLabel"/><url helper="Repiit_Click/getRepiitCreditsUrl"/><title>Repiit Credits</title><prepare/><urlParams/><position>90</position></action>
         </reference>
     </customer_logged_in>
 
@@ -18,4 +28,10 @@
             <block type="repiit_click/creditslist" name="creditslist" as="creditslist" template="repiit/click/credits.phtml" />
         </reference>
     </repiit_click_index_index>
+
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="repiit_click/product" name="repiit.click.button" as="repiitclickbutton" template="repiit/click/button_click.phtml" />
+        </reference>
+    </catalog_product_view>
 </layout>

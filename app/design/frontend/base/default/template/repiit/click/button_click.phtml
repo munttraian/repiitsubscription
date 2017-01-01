@@ -1,0 +1,18 @@
+<?php
+if (Mage::getSingleton('customer/session')->isLoggedIn()){
+
+    $customer_data = Mage::getSingleton('customer/session')->getCustomer();
+
+    $_product = Mage::registry('current_product');
+    $helper = Mage::helper('Repiit_Click');
+
+    $buttonTitle = 'Credits to Download';
+    ?>
+    <script type="text/javascript">
+        jQuery('.add-to-cart-buttons').append('<button class="button" onclick="this.form.action=\'<?php echo $helper->getClickDownloadPurchase($customer_data) ?>\'"><?php echo $this->__('Buy using credits') ?></button>');
+
+        jQuery('div.price-box span.regular-price').append('<span class=""><?php echo $_product->getData('clickdownload_price') . " " . $this->__('Credits'); ?></span>');
+    </script>
+    <?php
+}
+?>

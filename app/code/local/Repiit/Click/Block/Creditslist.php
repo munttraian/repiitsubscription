@@ -52,10 +52,10 @@ class Repiit_Click_Block_Creditslist extends Mage_Core_Block_Template
             'index' => 'title',
             'searchable' => true,
         ));
-        $grid->addColumn('real_credits', array(
+        $grid->addColumn('credit_amount', array(
             'header' => $this->__('Credits'),
             'align' => 'left',
-            'index' => 'real_credits',
+            'index' => 'credit_amount',
             'width' => '50px',
             'searchable' => true,
         ));
@@ -73,13 +73,6 @@ class Repiit_Click_Block_Creditslist extends Mage_Core_Block_Template
             'type' => 'date',
             'align' => 'left',
             'searchable' => true,
-        ));
-
-        $grid->addColumn('action', array(
-            'header' => $this->__('Action'),
-            'align' => 'left',
-            'type' => 'action',
-            'width' => '300px',
         ));
 
         $this->setChild('repiitclick_grid', $grid);

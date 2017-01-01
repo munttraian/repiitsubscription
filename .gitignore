@@ -5,3 +5,5 @@ tests/
 var/log/*
 var/cache/*
 var/session/*
+var/report/*
+media/*

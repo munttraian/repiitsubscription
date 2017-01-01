@@ -1,0 +1,41 @@
+.customer-account-repiitcredits .balance{
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-bottom: 1px dotted black;
+}
+.customer-account-repiitcredits #repiitcredits_grid {
+    background-color: #F6B26B;
+}
+.customer-account-repiitcredits .account-balance{
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-bottom: 1px dotted black;
+}
+
+
+.repiitcredits .discount{display: inline-block;width: 100%;}
+.repiitcredits .discount .form-group label{margin-left: 10px;}
+.discount .repiitcredits #repiitcredits{position: relative;margin-right: -33px;margin-top: 10px;margin-left: 15px;}
+.giftcard_change img{display:inline;}
+
+.discount .repiitcredits #repiitcredits{position: relative;margin-right: 0px;margin-top: -1px;margin-left: 0px;}
+.giftvoucher-discount-code img{display:inline}
+
+.repiitcredits .table .col-xs-12 .label{float:left;  margin-bottom: 5px;}
+.repiitcredits .table .col-xs-12 .v-middle{float:left;margin-top: 3px;margin-left: 3px;}
+
+
+.repiitcredits .sub-title{
+    font-size: 13px;
+    text-transform: none;
+    font-weight: 600;
+    margin: 0 0 5px;
+    padding: 0;
+    color: #2B3951;
+}
+.repiitcredits label em{
+    color: red;
+    font-weight: normal;
+    font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+    font-size: 12px;
+}

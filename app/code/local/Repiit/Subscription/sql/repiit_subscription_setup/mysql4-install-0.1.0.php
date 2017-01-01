@@ -48,7 +48,7 @@ function createAttributeGroup($setId, $groupName)
 }
 
 //create attribute
-function createAttribute($code, $label, $attribute_type, $product_type = 0, $is_filterable = 0, $attribute_exists = 0 )
+function createAttribute($code, $label, $attribute_type, $product_type = 0, $is_filterable = 0, $attribute_exists = 0, $source_model )
 {
     if ($attribute_exists)
     {
@@ -57,7 +57,8 @@ function createAttribute($code, $label, $attribute_type, $product_type = 0, $is_
             'frontend_input' => $attribute_type,
             'apply_to' => array($product_type),
             'is_filterable' => $is_filterable,
-            'frontend_label' => array($label)
+            'frontend_label' => array($label),
+            'source' => $source_model,
         );
     } else {
         $_attribute_data = array(
@@ -82,7 +83,8 @@ function createAttribute($code, $label, $attribute_type, $product_type = 0, $is_
             'is_filterable' => $is_filterable,
             'used_in_product_listing' => '0',
             'used_for_sort_by' => '0',
-            'frontend_label' => array($label)
+            'frontend_label' => array($label),
+            'source' => $source_model,
         );
     }
 
@@ -92,9 +94,11 @@ function createAttribute($code, $label, $attribute_type, $product_type = 0, $is_
     if (!isset($_attribute_data['is_configurable'])) {
         $_attribute_data['is_configurable'] = 0;
     }
+
     if (!isset($_attribute_data['is_filterable'])) {
         $_attribute_data['is_filterable'] = 0;
     }
+
     if (!isset($_attribute_data['is_filterable_in_search'])) {
         $_attribute_data['is_filterable_in_search'] = 0;
     }
@@ -112,6 +116,7 @@ function createAttribute($code, $label, $attribute_type, $product_type = 0, $is_
 
     $model->setEntityTypeId(Mage::getModel('eav/entity')->setType('catalog_product')->getTypeId());
     $model->setIsUserDefined(1);
+
     try {
         $model->save();
         //$setup = new Mage_Eav_Model_Entity_Setup('core_setup');
@@ -156,6 +161,7 @@ $arrAttributes = array(
                 "product_type" => 0,
                 "is_filterable" => 0,
                 "attribute_exists" => 0),
+    /*
     3 => array("code" => "subscription_months",
                 "label" => "Subscription Months",
                 "attribute_type" => "select",
@@ -180,17 +186,19 @@ $arrAttributes = array(
                 "product_type" => 0,
                 "is_filterable" => 0,
                 "attribute_exists" => 0),
+    */
     7 => array("code" => "subscription_delivery",
                 "label" => "Subscription Delivery",
                 "attribute_type" => "boolean",
                 "product_type" => 0,
                 "is_filterable" => 0,
-                "attribute_exists" => 0)
+                "attribute_exists" => 0),
+
 );
 
 foreach ($arrAttributes as $attribute)
 {
-    createAttribute($attribute['code'], $attribute['label'], $attribute['attribute_type'], $attribute['product_type'], $attribute['is_filterable'], $attribute['attribute_exists'] );
+    createAttribute($attribute['code'], $attribute['label'], $attribute['attribute_type'], $attribute['product_type'], $attribute['is_filterable'], $attribute['attribute_exists'], $attribute['source_model'] );
 }
 
 //=======create groups on sets

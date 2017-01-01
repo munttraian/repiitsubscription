@@ -33,4 +33,26 @@ $setup->addAttribute('catalog_product', 'subscription_id', array(
     'unique' => false,
 ));
 
+$setup->addAttribute('catalog_product', 'subscription_intervals', array(
+    'type' => 'select',        // "varchar" for input type text box
+    'group'     => 'Subscription',
+    'backend' => '',
+    'frontend' => '',
+    'label' => "Subscription Intervals",
+    'input' => 'select',    // "text" for input type text box
+    'class' => '',
+    'source' => '',            // Leave blank for input type text box
+    'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
+    'visible' => true,
+    'required' => false,
+    'user_defined' => false,
+    'default' => '0',        //Leave blank for input type text box
+    'searchable' => false,
+    'filterable' => false,
+    'comparable' => false,
+    'visible_on_front' => false,
+    'unique' => false,
+    'source' => 'repiit_subscription/ruleidtable'
+));
+
 $installer->endSetup();

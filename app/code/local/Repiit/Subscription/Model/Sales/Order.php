@@ -65,7 +65,7 @@ class Repiit_Subscription_Model_Sales_Order extends Mage_Core_Model_Abstract
         // Collect Rates and Set Shipping & Payment Method
         $shippingAddress->setCollectShippingRates(true)
             ->collectShippingRates()
-            ->setShippingMethod('flatrate_flatrate')
+            ->setShippingMethod('freeshipping_freeshipping')
             ->setPaymentMethod('checkmo');
 
         // Set Sales Order Payment
@@ -87,7 +87,6 @@ class Repiit_Subscription_Model_Sales_Order extends Mage_Core_Model_Abstract
         catch (Mage_Core_Exception $e) {
             echo $e->getMessage();
         }
-
 
 
         // Resource Clean-Up

@@ -55,6 +55,21 @@ class Repiit_Click_Helper_Data extends Mage_Core_Helper_Abstract {
         return Mage::getUrl('repiitclick/index');
     }
 
+    //get repiit url
+    /**
+     * @return string
+     */
+    public function getRepiitCreditsLabel()
+    {
+        //get customer data
+        $customer = Mage::getSingleton('customer/session')->getCustomer();
+
+        $repiitCredits = Mage::getModel('repiit_click/repiitcredits');
+        $repiitCredits->setCustomerId($customer->getId());
+
+        return $this->__('Repiit Credits') . " ( " . $repiitCredits->getActivePoints() . " )";
+    }
+
     //get click/download attribute group name
     /**
      * @return string
@@ -62,6 +77,30 @@ class Repiit_Click_Helper_Data extends Mage_Core_Helper_Abstract {
     public function getClickDownloadAttributeGroup()
     {
         return 'ClickDownload';
+    }
+
+    public function getClickDownloadPurchase($customer_data)
+    {
+        return Mage::getUrl('repiitclick/index/purchase', array('customerId' => $customer_data->getId()));
+    }
+
+    //invoice order
+    /*
+     * @param order Mage_Sales_Model_Order
+     */
+    public function invoiceOrder($order)
+    {
+        $capture = Mage_Sales_Model_Order_Invoice::NOT_CAPTURE;
+        /** @var Mage_Sales_Model_Order_Invoice $invoice */
+        $invoice = Mage::getModel('sales/service_order', $order)->prepareInvoice();
+        $invoice->setRequestedCaptureCase($capture);
+        $invoice->register();
+
+        $transaction = Mage::getModel('core/resource_transaction')
+            ->addObject($invoice)
+            ->addObject($invoice->getOrder());
+
+        $transaction->save();
     }
 
 }
