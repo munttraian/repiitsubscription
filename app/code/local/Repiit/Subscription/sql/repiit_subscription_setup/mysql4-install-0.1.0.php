@@ -49,7 +49,7 @@ if (!function_exists('getProductAttribute')) {
     }
 
     //create attribute
-    function createAttribute($code, $label, $attribute_type, $product_type = 0, $is_filterable = 0, $attribute_exists = 0, $source_model )
+    function createAttribute($code, $label, $attribute_type, $product_type = 0, $is_filterable = 0, $attribute_exists = 0 )
     {
         if ($attribute_exists)
         {
@@ -58,8 +58,7 @@ if (!function_exists('getProductAttribute')) {
                 'frontend_input' => $attribute_type,
                 'apply_to' => array($product_type),
                 'is_filterable' => $is_filterable,
-                'frontend_label' => array($label),
-                'source' => $source_model,
+                'frontend_label' => array($label)
             );
         } else {
             $_attribute_data = array(
@@ -84,8 +83,7 @@ if (!function_exists('getProductAttribute')) {
                 'is_filterable' => $is_filterable,
                 'used_in_product_listing' => '0',
                 'used_for_sort_by' => '0',
-                'frontend_label' => array($label),
-                'source' => $source_model,
+                'frontend_label' => array($label)
             );
         }
 
@@ -199,7 +197,7 @@ $arrAttributes = array(
 
 foreach ($arrAttributes as $attribute)
 {
-    createAttribute($attribute['code'], $attribute['label'], $attribute['attribute_type'], $attribute['product_type'], $attribute['is_filterable'], $attribute['attribute_exists'], $attribute['source_model'] );
+    createAttribute($attribute['code'], $attribute['label'], $attribute['attribute_type'], $attribute['product_type'], $attribute['is_filterable'], $attribute['attribute_exists'] );
 }
 
 //=======create groups on sets

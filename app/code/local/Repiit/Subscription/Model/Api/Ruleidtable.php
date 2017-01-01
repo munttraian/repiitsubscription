@@ -27,6 +27,7 @@ class Repiit_Subscription_Model_Api_Ruleidtable extends Repiit_Subscription_Mode
 
             foreach ($ruleids as $ruleid)
             {
+                if (!isset($ruleid['RULEID'])) continue;
                 $toOptionArray[$ruleid['RULEID']] = $ruleid['TXT'];
             }
 
