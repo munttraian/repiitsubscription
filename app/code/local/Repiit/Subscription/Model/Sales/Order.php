@@ -62,10 +62,12 @@ class Repiit_Subscription_Model_Sales_Order extends Mage_Core_Model_Abstract
             $shipmethod = 'freeshipping_freeshipping';
         }
 
+        $shippingAddress->setShippingMethod('freeshipping_freeshipping');
+        $shippingAddress->setFreeShipping(true);
+
         // Collect Rates and Set Shipping & Payment Method
         $shippingAddress->setCollectShippingRates(true)
             ->collectShippingRates()
-            ->setShippingMethod('freeshipping_freeshipping')
             ->setPaymentMethod('checkmo');
 
         // Set Sales Order Payment

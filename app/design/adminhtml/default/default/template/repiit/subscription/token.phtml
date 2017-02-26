@@ -3,6 +3,7 @@ $user = Mage::getStoreConfig('repiitsubscription/general/partener_id');
 $pass = Mage::getStoreConfig('repiitsubscription/general/key');
 $result = Mage::getModel('repiit_subscription/api')->getResultUsername($user);
 $result = trim($result,'"');
+$dummy = 1;
 ?>
 <script>
 
@@ -23,6 +24,6 @@ $result = trim($result,'"');
         var finalToken = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(combinedToken));
 
         console.log(finalToken.toString());
-        setCookie('repiit_token',finalToken.toString(), 1, '/');
+        setCookie('repiit_token',finalToken.toString(), 4, '/');
     }
 </script>

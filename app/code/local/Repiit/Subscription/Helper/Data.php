@@ -148,6 +148,18 @@ class Repiit_Subscription_Helper_Data extends Mage_Core_Helper_Abstract {
         return false;
     }
 
+    //get country_id by name
+    function getCountryId($countryName) {
+        $countryId = '';
+        $countryCollection = Mage::getModel('directory/country')->getCollection();
+        foreach ($countryCollection as $country) {
+            if ($countryName == $country->getName()) {
+                $countryId = $country->getCountryId();
+                break;
+            }
+        }
+        return $countryId;
+    }
 }
 
 ?>

@@ -205,3 +205,60 @@ PHP message: PHP  10. Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
 PHP message: PHP  11. Mage_Core_Model_Layout->generateBlocks($parent = *un
 2017/01/01 16:06:33 [error] 626#626: *400 FastCGI sent in stderr: ") /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Block/Widget/Form.php:195
 PHP message: PHP  23. Varien_Data_Form_Abstract->addField($elementId = *uninitialized*, $type = *uninitialized*, $config = *uninitialized*, $after = *uninitialized*) /filespart/public_html/magento/lib/Varien/Data/Form/Element/Fieldset.php:135" while reading response header from upstream, client: 192.168.99.1, server: localhost, request: "GET /index.php/admin/catalog_product/edit/id/905/key/7d80392044a1e7e63f5b7f1fdb5115ff/ HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dev.debian.loc", referrer: "http://dev.debian.loc/index.php/admin/catalog_product/index/key/c40ed1b6d69d753c3a8da73782e762be/"
+2017/02/26 04:47:35 [error] 628#628: *67 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to a member function setHeader() on null in /filespart/public_html/magento/app/design/adminhtml/default/default/template/repiit/subscription/token.phtml on line 2
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run($code = *uninitialized*, $type = *uninitialized*, $options = *uninitialized*) /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run($params = *uninitialized*) /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match($request = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch($action = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Catalog_ProductController->editAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Core_Controller_Varien_Action->renderLayout($output = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Catalog/ProductController.php:269
+PHP message: PHP   9. Mage_Core_Model_Layout->getOutput() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:390
+PHP message: PHP  10. Mage_Core_Block_Abstract->toHtml() /filespart/public_html/magento/app/code/core/Mage/Core/Model/Layout.php:555
+PHP message: PHP  11. Mage_Adminhtml_Block_Template->_toHtml() /filespart/public_html/magento/app/code/core/Mage/Core/Block/Abstract.php:923
+PHP message: PHP  12. Mage_Core_Block_Template->_toHtml() /filespart/public_html/magento/app/
+2017/02/26 04:47:35 [error] 628#628: *67 upstream sent too big header while reading response header from upstream, client: 192.168.99.1, server: localhost, request: "GET /index.php/admin/catalog_product/edit/id/905/back/edit/tab/product_info_tabs_group_110/key/bd14b0a8f8ebad818a69930330c9043a/ HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dev.debian.loc", referrer: "http://dev.debian.loc/index.php/admin/catalog_product/edit/id/905/back/edit/tab/product_info_tabs_group_110/key/bd14b0a8f8ebad818a69930330c9043a/"
+2017/02/26 04:48:21 [error] 628#628: *67 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to a member function setHeader() on null in /filespart/public_html/magento/app/design/adminhtml/default/default/template/repiit/subscription/token.phtml on line 2
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run() /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run() /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Catalog_ProductController->editAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Core_Controller_Varien_Action->renderLayout() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Catalog/ProductController.php:269
+PHP message: PHP   9. Mage_Core_Model_Layout->getOutput() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:390
+PHP message: PHP  10. Mage_Core_Block_Abstract->toHtml() /filespart/public_html/magento/app/code/core/Mage/Core/Model/Layout.php:555
+PHP message: PHP  11. Mage_Adminhtml_Block_Template->_toHtml() /filespart/public_html/magento/app/code/core/Mage/Core/Block/Abstract.php:923
+PHP message: PHP  12. Mage_Core_Block_Template->_toHtml() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Block/Template.php:81
+PHP message: PHP  13. Mage_Core_Block_Template->renderView() /filespart/public_html/magento/app/code/core/Mage/Core/Block/Template
+2017/02/26 05:27:23 [error] 628#628: *118 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to undefined method Repiit_Subscription_Model_Sales_Order_Fieldmapper::getIdFieldName() in /filespart/public_html/magento/app/code/local/Repiit/Subscription/controllers/OrderController.php on line 44
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run() /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run() /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Repiit_Subscription_OrderController->createAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418" while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /repiitsubscription/order/create HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dev.debian.loc"
+2017/02/26 05:28:13 [error] 628#628: *120 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to undefined method Repiit_Subscription_Model_Sales_Order_Fieldmapper::getIdFieldName() in /filespart/public_html/magento/app/code/local/Repiit/Subscription/controllers/OrderController.php on line 51
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run() /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run() /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Repiit_Subscription_OrderController->createAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418" while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /repiitsubscription/order/create HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dev.debian.loc"
+2017/02/26 05:29:15 [error] 628#628: *123 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to undefined method Repiit_Subscription_Model_Sales_Order_Fieldmapper::getIdFieldName() in /filespart/public_html/magento/app/code/local/Repiit/Subscription/controllers/OrderController.php on line 51
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run() /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run() /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Repiit_Subscription_OrderController->createAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418" while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /repiitsubscription/order/create HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dev.debian.loc"

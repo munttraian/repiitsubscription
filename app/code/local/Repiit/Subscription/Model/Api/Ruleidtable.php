@@ -17,7 +17,7 @@ class Repiit_Subscription_Model_Api_Ruleidtable extends Repiit_Subscription_Mode
     {
         $toOptionArray = array();
 
-        $apiUrl = $this->getApiUrl() . "Customer";
+        $apiUrl = $this->getApiUrl() . "RuleIdTable";
         $key = $this->getAuthorizationKey();
 
         try {

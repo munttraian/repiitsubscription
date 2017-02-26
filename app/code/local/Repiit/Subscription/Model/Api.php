@@ -12,6 +12,7 @@ class Repiit_Subscription_Model_Api
      */
     public function getAuthorizationKey($apiurl = "", $accountid = "", $key = "")
     {
+        return 'R0RTWHJDVFh1Q3hDc3gxblZzU21QZVNQNHdLUUU1ODAxcjdLVlBtL05WND06VHJhaWFuIE11bnRlYW51OjYzNjIzODIzNDkzMjczMDAwMA==';
         return $_COOKIE['repiit_token']; //$this->getRequest()->getCookie('repiit_subscription');
     }
 
@@ -21,7 +22,7 @@ class Repiit_Subscription_Model_Api
      */
     protected function getApiUrl()
     {
-        return "http://repiitportalmanager.azurewebsites.net/api/";
+        return "http://repiitportalmanager.azurewebsites.net/API/";
     }
 
     /*
@@ -85,6 +86,44 @@ class Repiit_Subscription_Model_Api
             ),
             CURLOPT_POST => 1,
             CURLOPT_POSTFIELDS => ""
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            return "cURL Error #:" . $err;
+        } else {
+            return $response;
+        }
+    }
+
+    /*
+     * POST with curl
+     * Params: apiUrl - url request including parameters
+     *         key - authorization key
+     */
+    protected function curlPostBody($apiUrl,$key, $jsonData)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $apiUrl,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $jsonData,
+            CURLOPT_HTTPHEADER => array(
+                "authorization: $key",
+                "cache-control: no-cache",
+                "content-type: application/json",
+                "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
+            ),
         ));
 
         $response = curl_exec($curl);

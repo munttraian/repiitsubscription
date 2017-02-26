@@ -22,6 +22,7 @@ class Repiit_Subscription_OrderController extends Mage_Core_Controller_Front_Act
         //check if it allowed
         if (!$token || !Mage::getModel('repiit_subscription/access')->accessAllowed($token) )
         {
+            echo "You do not have access on this service.";
             Mage::getSingleton('adminhtml/session')->addError($this->__('You do not have access on this service.'));
             //$this->_redirect('*/*/');
         }
@@ -40,11 +41,14 @@ class Repiit_Subscription_OrderController extends Mage_Core_Controller_Front_Act
         $telephone = $orderMapperModel->getFieldName('telephone');
         $postcode = $orderMapperModel->getFieldName('postcode');
         $city = $orderMapperModel->getFieldName('city');
+        $countryKey = $orderMapperModel->getFieldName('country');
         //shipping
         $shipAddress1Key= $orderMapperModel->getFieldName('shipAddress1');
         $shipAddress2Key= $orderMapperModel->getFieldName('shipAddress2');
         $shipAddress3Key= $orderMapperModel->getFieldName('shipAddress3');
         $shipAddress4Key= $orderMapperModel->getFieldName('shipAddress4');
+        $shipCityKey = $orderMapperModel->getFieldName('shipCity');
+        $shipCountryKey = $orderMapperModel->getFieldName('shipCountry');
 
         //get values
         $email = $jsonArray[$emailKey];
@@ -55,20 +59,26 @@ class Repiit_Subscription_OrderController extends Mage_Core_Controller_Front_Act
         $address2 = $jsonArray[$address2Key];
         $postcode = explode(' ', $jsonArray[$postcode])[0];
         $city = explode(' ', $jsonArray[$city])[0];
+        $country = $jsonArray[$countryKey];
         //shipping
         $shipAddress1 = $jsonArray[$shipAddress1Key];
         $shipAddress2 = $jsonArray[$shipAddress2Key];
         $shipAddress3 = $jsonArray[$shipAddress3Key];
         $shipAddress4 = $jsonArray[$shipAddress4Key];
-
+        $shipCity = $jsonArray[$shipCityKey];
+        $shipCountry = $jsonArray[$shipCountryKey];
 
         //get customer
         $customer = Mage::getModel('customer/customer')
             ->setWebsiteId(1)
             ->loadByEmail($email);
 
+        //get product with subscription id ROWNUMBER
+        $product = Mage::getModel('catalog/product')->loadByAttribute('subscription_id', $jsonArray['ROWNUMBER']);
+        if (!$product) return;
+
         //set order data
-        $orderModel->setProductids( array(905) );
+        $orderModel->setProductids( array($product->getId()) );
         $orderModel->setCustomer($customer);
         $orderModel->setEmail($email);
         $orderModel->setBillingAddress(
@@ -80,13 +90,15 @@ class Repiit_Subscription_OrderController extends Mage_Core_Controller_Front_Act
                 'lastname' => $lastname,
                 'suffix' => '',
                 'company' => '',
+                /*
                 'street' => array(
                     '0' => $address1,
                     '1' => $address2
-                ),
+                ),*/
+                'street' => $address1 . " " . $address2,
                 'city' => $city,
-                'country_id' => 'IN',
-                'region' => 'UP',
+                'country_id' => Mage::helper('Repiit_Subscription')->getCountryId($country),
+                'region' => '',
                 'postcode' => $postcode,
                 'telephone' => $telephone,
                 'fax' => '',
@@ -104,13 +116,16 @@ class Repiit_Subscription_OrderController extends Mage_Core_Controller_Front_Act
                 'lastname' => $lastname,
                 'suffix' => '',
                 'company' => '',
+                /*
                 'street' => array(
                     '0' => $shipAddress1,
                     '1' => $shipAddress2
                 ),
-                'city' => 'Noida',
-                'country_id' => 'IN',
-                'region' => 'UP',
+                */
+                'street' => $shipAddress1 . " " . $shipAddress2,
+                'city' => $shipCity,
+                'country_id' => Mage::helper('Repiit_Subscription')->getCountryId($shipCountry),
+                'region' => '',
                 'postcode' => $postcode,
                 'telephone' => $telephone,
                 'fax' => '',
