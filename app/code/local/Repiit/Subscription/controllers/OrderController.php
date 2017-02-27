@@ -92,7 +92,7 @@ class Repiit_Subscription_OrderController extends Mage_Core_Controller_Front_Act
             ->loadByEmail($email);
 
         //get product with subscription id ROWNUMBER
-        $product = Mage::getModel('catalog/product')->loadByAttribute('slu', $itemnumber);
+        $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $itemnumber);
         if (!$product) return;
 
         //set order data
