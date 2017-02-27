@@ -21,7 +21,7 @@ class Repiit_Subscription_Model_Api
      */
     protected function getApiUrl()
     {
-        return "http://repiitportalmanager.azurewebsites.net/API/";
+        return "https://repiitportalmanager.azurewebsites.net/API/";
     }
 
     /*
