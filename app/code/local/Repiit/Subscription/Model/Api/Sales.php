@@ -16,14 +16,6 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
     protected $_shippingAddress;
     protected $_dataMapped = array();
 
-    /**
-     * @param $order
-     */
-    public function __construct($order)
-    {
-        $this->setOrder($order);
-    }
-
     public function setOrder($order)
     {
         $this->_order = $order;
@@ -46,7 +38,15 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getRownumber()
     {
-        return $this->_orderProduct->getSubscriptionId();
+        return (int)$this->_orderProduct->getSubscriptionId();
+    }
+
+    /**
+     * @return string
+     */
+    protected function getNumber()
+    {
+        return (string)$this->_orderProduct->getSubscriptionId();
     }
 
     /**
@@ -118,6 +118,14 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
     /**
      * @return string
      */
+    protected function getAccount()
+    {
+        return 'test';
+    }
+
+    /**
+     * @return string
+     */
     protected function getCustomer()
     {
         return "customer";
@@ -129,7 +137,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getName()
     {
-        return $this->_billingAddress->getFirstname() . " " . $this->_billingAddress->getLastname();
+        return (string)$this->_billingAddress->getFirstname() . " " . $this->_billingAddress->getLastname();
     }
 
     /**
@@ -137,7 +145,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getAddress1()
     {
-        return $this->_billingAddress->getStreet();
+        return is_array($this->_billingAddress->getStreet())?(string)$this->_billingAddress->getStreet()[0]:(string)$this->_billingAddress->getStreet();
     }
 
     /**
@@ -145,7 +153,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getAddress2()
     {
-        return $this->_billingAddress->getStreet();
+        return (is_array($this->_billingAddress->getStreet()) && isset($this->_billingAddress->getStreet()[1]) )?(string)$this->_billingAddress->getStreet()[1]:'';
     }
 
     /**
@@ -153,11 +161,12 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getZipcity()
     {
-        return $this->_billingAddress->getPostcode() . " ". $this->_billingAddress->getCity();
+        $zipcity = $this->_billingAddress->getPostcode() . " ". $this->_billingAddress->getCity();
+        return (string)$zipcity;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     protected function getCountry()
     {
@@ -165,7 +174,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
 
         $countryName = $countryModel->getName();
 
-        return $countryName;
+        return (string)$countryName;
     }
 
     /**
@@ -173,7 +182,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getAttention()
     {
-        return "sample string";
+        return (string)"sample string";
     }
 
     /**
@@ -181,7 +190,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getPhone()
     {
-        return $this->_billingAddress->getTelephone();
+        return (string)$this->_billingAddress->getTelephone();
     }
 
     /**
@@ -189,7 +198,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getGroup()
     {
-        return "sample string";
+        return (string)"sample";
     }
 
     /**
@@ -197,7 +206,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getFixeddiscpct()
     {
-        return "1.0";
+        return (float) 1.0;
     }
 
 
@@ -206,15 +215,15 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getCurrency()
     {
-        return $this->_order->getOrderCurrencyCode();
+        return (string)$this->_order->getOrderCurrencyCode();
     }
 
     /**
-     * @return string
+     * @return int
      */
     protected function getLanguage()
     {
-        return '1';
+        return 1;
     }
 
     /**
@@ -222,23 +231,23 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getVat()
     {
-        return '1';
+        return (string)'1';
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     protected function getDlvaddress1()
     {
-        return $this->_shippingAddress->getStreet();
+        return is_array($this->_shippingAddress->getStreet())?(string)$this->_shippingAddress->getStreet()[0]:(string)$this->_shippingAddress->getStreet();
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     protected function getDlvaddress2()
     {
-        return $this->_shippingAddress->getStreet();
+        return (is_array($this->_shippingAddress->getStreet()) && isset($this->_shippingAddress->getStreet()[1]))?(string)$this->_shippingAddress->getStreet()[1]:'';
     }
 
     /**
@@ -246,11 +255,12 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getDlvzipcity()
     {
-        return $this->_shippingAddress->getPostcode() . " " . $this->_shippingAddress->getCity();
+        $dlvzipcity = $this->_shippingAddress->getPostcode() . " " . $this->_shippingAddress->getCity();
+        return (string)$dlvzipcity;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     protected function getDlvcountry()
     {
@@ -258,7 +268,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
 
         $countryName = $countryModel->getName();
 
-        return $countryName;
+        return (string)$countryName;
     }
 
     /**
@@ -342,19 +352,19 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     protected function getEmail()
     {
-        return $this->_order->getCustomerEmail();
+        return (string)$this->_order->getCustomerEmail();
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     protected function getDlvemail()
     {
-        return $this->_shippingAddress->getEmail();
+        return (string)$this->_shippingAddress->getEmail();
     }
 
     /**
@@ -366,34 +376,34 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     protected function getItemnumber()
     {
-        return $this->_orderItem->getSku();
+        return (string)$this->_orderItem->getSku();
     }
     /**
-     * @return mixed
+     * @return float
      */
     protected function getQty()
     {
-        return $this->_orderItem->getQty();
+        return (float)$this->_orderItem->getQty();
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     protected function getPrice()
     {
-        return $this->_orderItem->getPrice();
+        return (float)$this->_orderItem->getPrice();
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     protected function getItemtxt()
     {
-        return $this->_orderProduct->getSubscriptionDescription();
+        return (string)$this->_orderProduct->getSubscriptionDescription();
     }
 
     /**
@@ -405,27 +415,27 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     protected function getPriceunit()
     {
-        return $this->_orderItem->getPrice();
+        return (string)$this->_orderItem->getPrice();
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     protected function getCostprice()
     {
-        return $this->_orderItem->getBaseCost();
+        return (float)$this->_orderItem->getBaseCost();
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     protected function getVoucher()
     {
-        return $this->_order->getCouponCode();
+        return (string)$this->_order->getCouponCode();
     }
 
     /**
@@ -438,7 +448,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
 
     protected function getInvoicedate()
     {
-        return '0';
+        return '2017-02-23T00:00:00';
     }
 
     /**
@@ -450,7 +460,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
             "DATASET" => $this->getDataset(),
             "ROWNUMBER" => $this->getRownumber(),
             "LASTCHANGED" => $this->getLastchanged(),
-            "NUMBER_" => $this->getRownumber(),
+            "NUMBER_" => $this->getNumber(),
             "SEARCHNAME" => $this->getSearchname(),
             "CREATED" => $this->getCreated(),
             "NEXTDELIVERYDATE" => $this->getNextdeliverydate(),
@@ -463,7 +473,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
             "ATTENTION" => $this->getAttention(),
             "PHONE" => $this->getPhone(),
             "GROUP_" => $this->getGroup(),
-            "FIXEDDISCPCT" => $this->Fixeddiscpct(),
+            "FIXEDDISCPCT" => $this->getFixeddiscpct(),
             "CURRENCY" => $this->getCurrency(),
             "LANGUAGE_" => $this->getLanguage(),
             "VAT" => $this->getVat(),
@@ -471,7 +481,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
             "DLVADDRESS2" => $this->getDlvaddress2(),
             "DLVZIPCITY" => $this->getDlvzipcity(),
             "DLVCOUNTRY" => $this->getDlvcountry(),
-            "YOURREF" => $this->getYourself(),
+            "YOURREF" => $this->getYourref(),
             "OURREF" => $this->getOurref(),
             "REFERENCENUMBER" => $this->getReferencenumber(),
             "DISCOUNT" => $this->getDiscount(),
@@ -502,13 +512,21 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     public function sendOrderToRepiit()
     {
-        $helper = Mage::helper('Repiit_Subscription');
+
         $apiUrl = $this->getApiUrl() . "SalesTableAr";
         $key = $this->getAuthorizationKey();
 
-        $ret = $this->curlPut($apiUrl, $key, $this->_dataMapped);
+        $this->mapData();
+        Mage::log(json_encode($this->_dataMapped));
+        $ret = $this->curlPostBody($apiUrl, $key, json_encode($this->_dataMapped));
 
-        return $ret;
+        $retJson = json_decode($ret, true);
+
+        if (!$ret || !is_array($retJson)) return false;
+
+        if ($retJson['ROWNUMBER']) return $retJson['ROWNUMBER'];
+
+        return false;
 
     }
 }

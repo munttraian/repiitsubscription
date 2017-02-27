@@ -33,7 +33,10 @@ class Repiit_Subscription_Model_Api_Item extends Repiit_Subscription_Model_Api
     public function createItem($postData)
     {
         $helper = Mage::helper('Repiit_Subscription');
-        $apiUrl = $this->getApiUrl() . "Item" . $helper->makeUrl($postData);
+        //$apiUrl = $this->getApiUrl() . "Item" . $helper->makeUrl($postData);
+        $apiUrl = $this->getApiUrl() . "Item";
+
+        $jsonData = json_encode($postData);
 
         Mage::log($apiUrl);
 
@@ -41,7 +44,7 @@ class Repiit_Subscription_Model_Api_Item extends Repiit_Subscription_Model_Api
 
         Mage::log($key);
 
-        $ret = $this->curlPost($apiUrl, $key);
+        $ret = $this->curlPostBody($apiUrl, $key, $jsonData);
 
         return $ret;
     }

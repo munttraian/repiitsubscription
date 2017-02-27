@@ -10,7 +10,8 @@ class Repiit_Subscription_Model_Sales_Order_Fieldmapper
 {
     protected $arrFieldMapper = array(
         "name" => "NAME",
-        "repiit_customerid" => "ROWNUMBER",
+        "rownumber" => "ROWNUMBER",
+        "itemnumber" => "ITEMNUMBER",
         "email" => "EMAIL",
         "phone" => "PHONE",
         "vat_id" => "VATNUMBER",
@@ -28,7 +29,11 @@ class Repiit_Subscription_Model_Sales_Order_Fieldmapper
         "shipAddress4" => "DLVADDRESS4",
         "shipCity" => "DLVZIPCITY",
         "shipPostcode" => "DLVZIPCITY",
-        "shipCountry" => "DLVCOUNTRY"
+        "shipCountry" => "DLVCOUNTRY",
+
+        "vatamount" => "VATAMOUNT",
+        "voucher" => "VOUCHER",
+        "qty" => "QTY",
     );
 
     /*

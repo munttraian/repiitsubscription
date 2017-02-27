@@ -5,25 +5,29 @@ $result = Mage::getModel('repiit_subscription/api')->getResultUsername($user);
 $result = trim($result,'"');
 $dummy = 1;
 ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
 <script>
 
     var repiit_token_cookie = getCookie('repiit_token');
     var repiit_useragent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36';
 
     if (!repiit_token_cookie) {
-        var result = '<?php echo $result ?>';
+        navigator.userAgent = repiit_useragent;
+        var result = 'nM5aiFNUeWL9icb56akttLsO7NomSJoqS/L2+wpi594y:testIP';
         var pass = '<?php echo $pass ?>';
         var user = '<?php echo $user ?>';
         var ticks = (new Date().getTime() * 10000) + 621355968000000000;
         var arrayOfResult = result.split(":");
         var passwordHash = CryptoJS.HmacSHA256(arrayOfResult[0], [pass, arrayOfResult[0]].join(":"));
         var passwordToken = CryptoJS.enc.Base64.stringify(passwordHash);
-        var hash = CryptoJS.HmacSHA256([user, arrayOfResult[1], repiit_useragent.replace(/ \.NET.+;/, ''), ticks].join(":"), passwordToken);
+        var hash = CryptoJS.HmacSHA256([user, arrayOfResult[1], navigator.userAgent.replace(/ \.NET.+;/, ''), ticks].join(":"), passwordToken);
         var tokenLeft = CryptoJS.enc.Base64.stringify(hash);
         var combinedToken = [tokenLeft, [user, ticks].join(":")].join(":");
         var finalToken = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(combinedToken));
 
+        console.log(navigator.userAgent);
         console.log(finalToken.toString());
-        setCookie('repiit_token',finalToken.toString(), 4, '/');
+        setCookie('repiit_token',finalToken.toString(), 1, '/');
     }
 </script>

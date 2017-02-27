@@ -160,6 +160,18 @@ class Repiit_Subscription_Helper_Data extends Mage_Core_Helper_Abstract {
         }
         return $countryId;
     }
+
+    //set order subscription_id
+    public function setOrderSubscriptionId($orderId, $value)
+    {
+        $coreResource = Mage::getSingleton('core/resource');
+        $conn = $coreResource->getConnection('core_write');
+
+        $sql = "UPDATE " . $coreResource->getTableName('sales_flat_order') . " SET subscription_id = :value WHERE entity_id = :orderId";
+        $bind = array('value' => $value, 'orderId' => $orderId);
+        $conn->query($sql, $bind);
+
+    }
 }
 
 ?>

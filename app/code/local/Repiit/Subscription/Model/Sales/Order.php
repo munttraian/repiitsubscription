@@ -35,6 +35,9 @@ class Repiit_Subscription_Model_Sales_Order extends Mage_Core_Model_Abstract
         // Assign Customer To Sales Order Quote
         $quote->assignCustomer($this->getCustomer());
 
+        //set coupon code
+        $quote->setCouponCode($this->getCouponCode());
+
         // Configure Notification
         //$quote->setSendCconfirmation(1);
         $productids = $this->getProductids();
@@ -45,7 +48,7 @@ class Repiit_Subscription_Model_Sales_Order extends Mage_Core_Model_Abstract
             //set subscription data on product
             $product->setPrice($product->getSubscriptionPrice());
 
-            $quote->addProduct($product, new Varien_Object(array('qty' => 1)));
+            $quote->addProduct($product, new Varien_Object(array('qty' => $this->getQty())));
         }
 
         // Set Sales Order Billing Address

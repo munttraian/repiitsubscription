@@ -28,14 +28,15 @@ class Repiit_Subscription_Model_Observer
                 $ret = ""; //api return code
 
                 $postData = array(
+                    "DATASET" => "DAT",
                     "ITEMNUMBER" => $data['sku'],
                     "ITEMTXT" => $data['name'],
                     "ITEMTEXT" => $data['name'],
                     "PRICE" => $data['subscription_price'],
-                    "RULEID" => "02",
+                    "RULEID" => $data['subscription_intervals'],
                     "COSTPRICE" => 1,
                     "UNIT" => 1,
-                    "DELIVERYTIME" => 7,//$data['subscription_deliverytime'],
+                    "DELIVERYTIME" => $data['subscription_deliverytime'],
                     "SUPPLIER" => $product->getAttributeText('manufacturer')
                 );
 
@@ -57,7 +58,7 @@ class Repiit_Subscription_Model_Observer
                 else
                 {
                     //item does not exists, create it
-                    $ret = Mage::getModel('repiit_subscription/api')->createItem($postData);
+                    $ret = Mage::getModel('repiit_subscription/api_item')->createItem($postData);
 
                     Mage::log($ret);
 
@@ -82,4 +83,28 @@ class Repiit_Subscription_Model_Observer
         }
     }
 
-}
+
+    /* Send order on repiit*/
+    public function afterOrderSaved(Varien_Event_Observer $observer)
+    {
+        $event = $observer->getEvent();
+        $order = $event->getOrder();
+
+        if ($order->getSubscriptionId() || $order->getSubscriptionId <> 0) return; //already sent
+
+        $realOrderId = (string)$order->getIncrementId();
+
+        $repiitOrder = Mage::getModel('repiit_subscription/api_sales');
+        $repiitOrder->setOrder($order);
+        $ret = $repiitOrder->sendOrderToRepiit();
+
+        $helper = Mage::helper('Repiit_Subscription');
+
+        if ($ret) {
+            $event->getOrder()->setSubscriptionId($ret);
+            $helper->setOrderSubscriptionId($order->getId(), $ret);
+        }
+
+    }
+
+    }

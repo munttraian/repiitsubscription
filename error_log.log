@@ -262,3 +262,162 @@ PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/p
 PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
 PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
 PHP message: PHP   7. Repiit_Subscription_OrderController->createAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418" while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "POST /repiitsubscription/order/create HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dev.debian.loc"
+2017/02/26 15:53:05 [error] 13749#13749: *251 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to undefined method Repiit_Subscription_Model_Api::setOrder() in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Observer.php on line 95
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run($code = *uninitialized*, $type = *uninitialized*, $options = *uninitialized*) /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run($params = *uninitialized*) /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match($request = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch($action = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Sales_Order_CreateController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Adminhtml_Model_Sales_Order_Create->createOrder() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Sales/Order/CreateController.php:499
+PHP message: PHP   9. Mage_Sales_Model_Service_Quote->submit() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Model/Sales/Order/Create.php:1555
+PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:126
+PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
+PHP message: PHP  12. Mage_Core_Model_Abstract->save() /filespart
+2017/02/26 15:54:08 [error] 13749#13749: *251 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to undefined method Repiit_Subscription_Model_Observer::sendOrderToRepiit() in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Observer.php on line 96
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run($code = *uninitialized*, $type = *uninitialized*, $options = *uninitialized*) /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run($params = *uninitialized*) /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match($request = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch($action = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Sales_Order_CreateController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Adminhtml_Model_Sales_Order_Create->createOrder() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Sales/Order/CreateController.php:499
+PHP message: PHP   9. Mage_Sales_Model_Service_Quote->submit() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Model/Sales/Order/Create.php:1555
+PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:126
+PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
+PHP message: PHP  12. Mage_Core_Model_Abstract->sav
+2017/02/26 15:54:42 [error] 13749#13749: *251 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to a member function sendOrderToRepiit() on null in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Observer.php on line 96
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run($code = *uninitialized*, $type = *uninitialized*, $options = *uninitialized*) /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run($params = *uninitialized*) /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match($request = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch($action = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Sales_Order_CreateController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Adminhtml_Model_Sales_Order_Create->createOrder() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Sales/Order/CreateController.php:499
+PHP message: PHP   9. Mage_Sales_Model_Service_Quote->submit() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Model/Sales/Order/Create.php:1555
+PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:126
+PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
+PHP message: PHP  12. Mage_Core_Model_Abstract->save() /filespart/public_html/
+2017/02/26 15:57:30 [error] 13749#13749: *251 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to a member function sendOrderToRepiit() on null in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Observer.php on line 96
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run($code = *uninitialized*, $type = *uninitialized*, $options = *uninitialized*) /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run($params = *uninitialized*) /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match($request = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch($action = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Sales_Order_CreateController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Adminhtml_Model_Sales_Order_Create->createOrder() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Sales/Order/CreateController.php:499
+PHP message: PHP   9. Mage_Sales_Model_Service_Quote->submit() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Model/Sales/Order/Create.php:1555
+PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:126
+PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
+PHP message: PHP  12. Mage_Core_Model_Abstract->save() /filespart/public_html/
+2017/02/26 15:57:50 [error] 13749#13749: *251 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to undefined method Repiit_Subscription_Model_Api_Sales::getAccount() in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Api/Sales.php on line 449
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run($code = *uninitialized*, $type = *uninitialized*, $options = *uninitialized*) /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run($params = *uninitialized*) /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match($request = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch($action = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Sales_Order_CreateController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Adminhtml_Model_Sales_Order_Create->createOrder() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Sales/Order/CreateController.php:499
+PHP message: PHP   9. Mage_Sales_Model_Service_Quote->submit() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Model/Sales/Order/Create.php:1555
+PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:126
+PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
+PHP message: PHP  12. Mage_Core_Model_Abstract->save() 
+2017/02/26 15:59:04 [error] 13749#13749: *251 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to undefined method Repiit_Subscription_Model_Api_Sales::Fixeddiscpct() in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Api/Sales.php on line 463
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run($code = *uninitialized*, $type = *uninitialized*, $options = *uninitialized*) /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run($params = *uninitialized*) /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match($request = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch($action = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Sales_Order_CreateController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Adminhtml_Model_Sales_Order_Create->createOrder() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Sales/Order/CreateController.php:499
+PHP message: PHP   9. Mage_Sales_Model_Service_Quote->submit() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Model/Sales/Order/Create.php:1555
+PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:126
+PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
+PHP message: PHP  12. Mage_Core_Model_Abstract->save(
+2017/02/26 15:59:40 [error] 13749#13749: *251 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to undefined method Repiit_Subscription_Model_Api_Sales::getYourself() in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Api/Sales.php on line 471
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run($code = *uninitialized*, $type = *uninitialized*, $options = *uninitialized*) /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run($params = *uninitialized*) /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match($request = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch($action = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Sales_Order_CreateController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Adminhtml_Model_Sales_Order_Create->createOrder() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Sales/Order/CreateController.php:499
+PHP message: PHP   9. Mage_Sales_Model_Service_Quote->submit() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Model/Sales/Order/Create.php:1555
+PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:126
+PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
+PHP message: PHP  12. Mage_Core_Model_Abstract->save()
+2017/02/26 16:27:24 [error] 13749#13749: *278 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 192.168.99.1, server: localhost, request: "POST /index.php/admin/sales_order_edit/save/key/53c55a15de91ebf89eafdeef17914777/ HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dev.debian.loc", referrer: "http://dev.debian.loc/index.php/admin/sales_order_edit/index/key/c72532505331d1e3eedb07fa3a34d9a4/"
+2017/02/26 16:52:01 [error] 13749#13749: *301 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected 'return' (T_RETURN) in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Api/Sales.php on line 251
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run($code = *uninitialized*, $type = *uninitialized*, $options = *uninitialized*) /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run($params = *uninitialized*) /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match($request = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch($action = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Sales_Order_CreateController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Adminhtml_Model_Sales_Order_Create->createOrder() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Sales/Order/CreateController.php:499
+PHP message: PHP   9. Mage_Sales_Model_Service_Quote->submit() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Model/Sales/Order/Create.php:1555
+PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:126
+PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
+PHP message: PHP  12. Mage_Core_Model_Abstract->save() /filespart/public_html/magento
+2017/02/26 16:52:01 [error] 13749#13749: *301 upstream sent too big header while reading response header from upstream, client: 192.168.99.1, server: localhost, request: "POST /index.php/admin/sales_order_edit/save/key/59d1236bfe9aa5e37121d3a08663cbe2/ HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dev.debian.loc", referrer: "http://dev.debian.loc/index.php/admin/sales_order_edit/index/key/4bae2c02cac4894dd2d6f3c32f531dce/"
+2017/02/26 16:53:17 [error] 13749#13749: *301 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected 'return' (T_RETURN) in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Api/Sales.php on line 251
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run($code = *uninitialized*, $type = *uninitialized*, $options = *uninitialized*) /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run($params = *uninitialized*) /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match($request = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch($action = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Sales_Order_CreateController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Adminhtml_Model_Sales_Order_Create->createOrder() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Sales/Order/CreateController.php:499
+PHP message: PHP   9. Mage_Sales_Model_Service_Quote->submit() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Model/Sales/Order/Create.php:1555
+PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:126
+PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
+PHP message: PHP  12. Mage_Core_Model_Abstract->save() /filespart/public_html/magento
+2017/02/26 16:53:17 [error] 13749#13749: *301 upstream sent too big header while reading response header from upstream, client: 192.168.99.1, server: localhost, request: "POST /index.php/admin/sales_order_edit/save/key/59d1236bfe9aa5e37121d3a08663cbe2/ HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dev.debian.loc", referrer: "http://dev.debian.loc/index.php/admin/sales_order_edit/index/key/4bae2c02cac4894dd2d6f3c32f531dce/"
+2017/02/26 16:57:49 [error] 17063#17063: *5 FastCGI sent in stderr: "PHP message: PHP Parse error:  syntax error, unexpected 'return' (T_RETURN) in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Api/Sales.php on line 251
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run($code = *uninitialized*, $type = *uninitialized*, $options = *uninitialized*) /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run($params = *uninitialized*) /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match($request = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch($action = *uninitialized*) /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Sales_Order_CreateController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Adminhtml_Model_Sales_Order_Create->createOrder() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Sales/Order/CreateController.php:499
+PHP message: PHP   9. Mage_Sales_Model_Service_Quote->submit() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Model/Sales/Order/Create.php:1555
+PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:126
+PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
+PHP message: PHP  12. Mage_Core_Model_Abstract->save() /filespart/public_html/magento/a
+2017/02/26 16:57:49 [error] 17063#17063: *5 upstream sent too big header while reading response header from upstream, client: 192.168.99.1, server: localhost, request: "POST /index.php/admin/sales_order_create/save/key/5dd8752a6803b16dbe8edee3166a8e59/ HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "dev.debian.loc", referrer: "http://dev.debian.loc/index.php/admin/sales_order_create/index/key/6f5a07e08b8b62b551aef0d848f44efc/"
+2017/02/26 19:10:45 [error] 17063#17063: *84 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Cannot break/continue 1 level in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Observer.php on line 93
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run() /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run() /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Sales_Order_CreateController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Adminhtml_Model_Sales_Order_Create->createOrder() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Sales/Order/CreateController.php:499
+PHP message: PHP   9. Mage_Sales_Model_Service_Quote->submit() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/Model/Sales/Order/Create.php:1555
+PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:126
+PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
+PHP message: PHP  12. Mage_Core_Model_Abstract->save() /filespart/public_html/magento/app/code/core/Mage/Core/Model/Resource/Transaction.php:151
+PHP message: PHP  13. Mage_Sales_Model_Order->_afterSave() /filespart/public_html/magento/app/code/core/Mage/C

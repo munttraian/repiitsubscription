@@ -35,6 +35,7 @@ class Repiit_Subscription_TokenController extends Mage_Core_Controller_Front_Act
             var combinedToken = [tokenLeft, [user, ticks].join(":")].join(":");
             var finalToken = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(combinedToken));
 
+            console.log(navigator.userAgent);
             document.write(finalToken.toString());
         </script>
         <?php

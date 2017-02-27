@@ -12,7 +12,6 @@ class Repiit_Subscription_Model_Api
      */
     public function getAuthorizationKey($apiurl = "", $accountid = "", $key = "")
     {
-        return 'R0RTWHJDVFh1Q3hDc3gxblZzU21QZVNQNHdLUUU1ODAxcjdLVlBtL05WND06VHJhaWFuIE11bnRlYW51OjYzNjIzODIzNDkzMjczMDAwMA==';
         return $_COOKIE['repiit_token']; //$this->getRequest()->getCookie('repiit_subscription');
     }
 
@@ -43,9 +42,15 @@ class Repiit_Subscription_Model_Api
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "authorization: $key",
-                "cache-control: no-cache",
-                "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
+                "Authorization: $key",
+                "Cache-Control: no-cache",
+                "Accept: */*",
+                "Accept-Encoding: gzip, deflate, sdch",
+                "Accept-Language: en-US,en;q=0.8,ro;q=0.6,es;q=0.4,da;q=0.2",
+                "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+                "Content-Type: text/plain",
+                "Connection: keep-alive",
+                "Host: repiitportalmanager.azurewebsites.net"
             ),
         ));
 
@@ -81,8 +86,14 @@ class Repiit_Subscription_Model_Api
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_HTTPHEADER => array(
                 "authorization: $key",
-                "cache-control: no-cache",
-                "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
+                "Cache-Control: no-cache",
+                "Accept: */*",
+                "Accept-Encoding: gzip, deflate, sdch",
+                "Accept-Language: en-US,en;q=0.8,ro;q=0.6,es;q=0.4,da;q=0.2",
+                "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+                "Content-Type: application/json",
+                "Connection: keep-alive",
+                "Host: repiitportalmanager.azurewebsites.net"
             ),
             CURLOPT_POST => 1,
             CURLOPT_POSTFIELDS => ""
@@ -120,9 +131,14 @@ class Repiit_Subscription_Model_Api
             CURLOPT_POSTFIELDS => $jsonData,
             CURLOPT_HTTPHEADER => array(
                 "authorization: $key",
-                "cache-control: no-cache",
-                "content-type: application/json",
-                "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
+                "Cache-Control: no-cache",
+                "Accept: */*",
+                "Accept-Encoding: gzip, deflate, sdch",
+                "Accept-Language: en-US,en;q=0.8,ro;q=0.6,es;q=0.4,da;q=0.2",
+                "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+                "Content-Type: application/json",
+                "Connection: keep-alive",
+                "Host: repiitportalmanager.azurewebsites.net"
             ),
         ));
 
@@ -157,8 +173,14 @@ class Repiit_Subscription_Model_Api
             CURLOPT_CUSTOMREQUEST => "DELETE",
             CURLOPT_HTTPHEADER => array(
                 "authorization: $key",
-                "cache-control: no-cache",
-                "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
+                "Cache-Control: no-cache",
+                "Accept: */*",
+                "Accept-Encoding: gzip, deflate, sdch",
+                "Accept-Language: en-US,en;q=0.8,ro;q=0.6,es;q=0.4,da;q=0.2",
+                "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+                "Content-Type: application/json",
+                "Connection: keep-alive",
+                "Host: repiitportalmanager.azurewebsites.net"
             ),
         ));
 
@@ -195,9 +217,14 @@ class Repiit_Subscription_Model_Api
             CURLOPT_POSTFIELDS => $jsonData,
             CURLOPT_HTTPHEADER => array(
                 "authorization: $key",
-                "cache-control: no-cache",
-                "content-type: application/json",
-                "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"
+                "Cache-Control: no-cache",
+                "Accept: */*",
+                "Accept-Encoding: gzip, deflate, sdch",
+                "Accept-Language: en-US,en;q=0.8,ro;q=0.6,es;q=0.4,da;q=0.2",
+                "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+                "Content-Type: application/json",
+                "Connection: keep-alive",
+                "Host: repiitportalmanager.azurewebsites.net"
             ),
         ));
 

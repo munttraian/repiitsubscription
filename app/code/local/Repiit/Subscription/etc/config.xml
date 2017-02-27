@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Repiit_Subscription>
-            <version>0.1.2</version>
+            <version>0.1.3</version>
         </Repiit_Subscription>
     </modules>
     <global>
@@ -31,16 +31,27 @@
                 <class>Repiit_Subscription_Block</class>
             </repiit_subscription>
         </blocks>
+        <events>
+            <sales_order_save_after>
+                <observers>
+                    <repiit_subscription>
+                        <type>singleton</type>
+                        <class>repiit_subscription/observer</class>
+                        <method>afterOrderSaved</method>
+                    </repiit_subscription>
+                </observers>
+            </sales_order_save_after>
+        </events>
     </global>
     <frontend>
         <routers>
-            <denimio_sizefeedback>
+            <repiit_subscription>
                 <use>standard</use>
                 <args>
                     <module>Repiit_Subscription</module>
                     <frontName>repiitsubscription</frontName>
                 </args>
-            </denimio_sizefeedback>
+            </repiit_subscription>
         </routers>
         <layout>
             <updates>

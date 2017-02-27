@@ -2,8 +2,6 @@
 <layout>
     <default>
         <reference name="head">
-            <action method="addItem"><type>js</type><name>repiit/crypto-js/3.1.2/rollups/hmac-sha256.js</name><params/></action>
-            <action method="addItem"><type>js</type><name>repiit/crypto-js/3.1.2/components/enc-base64.js</name><params/></action>
             <action method="addItem"><type>js</type><name>repiit/cookies.js</name><params/></action>
         </reference>
         <reference name="content">

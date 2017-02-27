@@ -31,7 +31,9 @@ class Repiit_Subscription_OrderController extends Mage_Core_Controller_Front_Act
         $orderMapperModel = Mage::getModel('repiit_subscription/sales_order_fieldmapper');
 
 
-        //get keys
+        //============  get keys ======================//
+        $rownumberKey = $orderMapperModel->getFieldName('rownumber');
+        $itemnumberKey = $orderMapperModel->getFieldName('itemnumber');
         $emailKey = $orderMapperModel->getFieldName('email');
         $currencyKey = $orderMapperModel->getFieldName('currency');
         $firstnameKey = $orderMapperModel->getFieldName('name');
@@ -50,7 +52,16 @@ class Repiit_Subscription_OrderController extends Mage_Core_Controller_Front_Act
         $shipCityKey = $orderMapperModel->getFieldName('shipCity');
         $shipCountryKey = $orderMapperModel->getFieldName('shipCountry');
 
-        //get values
+        //tax
+        $vatamountKey = $orderMapperModel->getFieldName('vatamount');
+
+        $voucherKey = $orderMapperModel->getFieldName('voucher');
+
+        $qtyKey = $orderMapperModel->getFieldName('qty');
+
+        //======== get values =======================//
+        $rownumber = $jsonArray[$rownumberKey];
+        $itemnumber = $jsonArray[$itemnumberKey];
         $email = $jsonArray[$emailKey];
         $currency = $jsonArray[$currencyKey];
         $firstname = explode(' ',$jsonArray[$firstnameKey])[0];
@@ -68,19 +79,29 @@ class Repiit_Subscription_OrderController extends Mage_Core_Controller_Front_Act
         $shipCity = $jsonArray[$shipCityKey];
         $shipCountry = $jsonArray[$shipCountryKey];
 
-        //get customer
+        //tax
+        $vatamount = $jsonArray[$vatamountKey];
+
+        $voucher = $jsonArray[$voucherKey];
+
+        $qty = $jsonArray[$qtyKey];
+
+        //====================== get customer ==========================//
         $customer = Mage::getModel('customer/customer')
             ->setWebsiteId(1)
             ->loadByEmail($email);
 
         //get product with subscription id ROWNUMBER
-        $product = Mage::getModel('catalog/product')->loadByAttribute('subscription_id', $jsonArray['ROWNUMBER']);
+        $product = Mage::getModel('catalog/product')->loadByAttribute('slu', $itemnumber);
         if (!$product) return;
 
         //set order data
         $orderModel->setProductids( array($product->getId()) );
         $orderModel->setCustomer($customer);
         $orderModel->setEmail($email);
+        $orderModel->setCouponCode($voucher);
+        $orderModel->setCurrency($currency);
+        $orderModel->setQty($qty);
         $orderModel->setBillingAddress(
             array(
                 'customer_address_id' => '',
