@@ -20,17 +20,25 @@ class Repiit_Subscription_Model_Sales_Order extends Mage_Core_Model_Abstract
      */
     public function createOrder()
     {
+        $appEmulation = Mage::getSingleton('core/app_emulation');
+
+        //Start environment emulation of the specified store
+        $initialEnvironmentInfo = $appEmulation->startEnvironmentEmulation(Mage::app()->getStore()->getId());
+
         $shipprice = 0;
         $websiteId = 1;
 
         $websiteId = Mage::app()->getWebsite()->getId();
+        Mage::app()->getStore()->setCurrentCurrencyCode('DKK');
         $store = Mage::app()->getStore();
 
         // Start New Sales Order Quote
         $quote = Mage::getModel('sales/quote')->setStoreId($store->getId());
 
         // Set Sales Order Quote Currency
-        $quote->setCurrency($this->getCurrency());
+        //$quote->setCurrency($this->getCurrency());
+        $quote->setQuoteCurrencyCode($this->getCurrency());
+        $quote->setStoreCurrencyCode($this->getCurrency());
 
         // Assign Customer To Sales Order Quote
         $quote->assignCustomer($this->getCustomer());
@@ -93,6 +101,9 @@ class Repiit_Subscription_Model_Sales_Order extends Mage_Core_Model_Abstract
             echo $e->getMessage();
         }
 
+
+        //Stop environment emulation and restore original store
+        $appEmulation->stopEnvironmentEmulation($initialEnvironmentInfo);
 
         // Resource Clean-Up
         $quote = $customer = $service = null;

@@ -387,7 +387,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getQty()
     {
-        return (float)$this->_orderItem->getQty();
+        return (float)$this->_orderItem->getQtyOrdered();
     }
 
     /**
