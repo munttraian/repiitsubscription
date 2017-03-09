@@ -64,6 +64,22 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </js_selector_config>
+                        <url translate="label">
+                            <label>Api Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <curl_host>
+                            <label>Curl Host</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </curl_host>
                     </fields>
                 </api>
             </groups>

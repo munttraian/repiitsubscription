@@ -38,7 +38,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getRownumber()
     {
-        return (int)$this->_orderProduct->getSubscriptionId();
+        return (int)$this->_order->getSubscriptionId();
     }
 
     /**
@@ -46,7 +46,7 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
      */
     protected function getNumber()
     {
-        return (string)$this->_orderProduct->getSubscriptionId();
+        return (string)$this->_order->getSubscriptionId();
     }
 
     /**
@@ -518,7 +518,9 @@ class Repiit_Subscription_Model_Api_Sales extends Repiit_Subscription_Model_Api
 
         $this->mapData();
         Mage::log(json_encode($this->_dataMapped));
-        $ret = $this->curlPostBody($apiUrl, $key, json_encode($this->_dataMapped));
+
+        if ($this->_dataMapped['ROWNUMBER']) $ret = $this->curlPut($apiUrl, $key, json_encode($this->_dataMapped));
+        else $ret = $this->curlPostBody($apiUrl, $key, json_encode($this->_dataMapped));
 
         $retJson = json_decode($ret, true);
 

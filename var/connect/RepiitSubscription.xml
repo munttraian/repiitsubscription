@@ -1,5 +1,6 @@
 <_>
-   <form_key>5aQJDZ0Rt4aoq2MO</form_key>
+   <form_key>15kn2W2P9PKUiG4E</form_key>
+   <_create/>
    <name>Repiit_Subscription</name>
    <channel>Repiit</channel>
    <version_ids>
@@ -40,7 +41,7 @@
             <max/>
          </max>
          <files>
-            <files>        </files>
+            <files>          </files>
          </files>
       </package>
       <extension>

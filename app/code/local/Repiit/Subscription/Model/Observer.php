@@ -15,11 +15,12 @@ class Repiit_Subscription_Model_Observer
     public function productSaveAfter($observer)
     {
         $event = $observer->getEvent();
-
         $product = $event->getProduct();
 
         $origData = $product->getOrigData();
         $data = $product->getData();
+
+        $error = false;
 
         try {
             //do action
@@ -75,11 +76,24 @@ class Repiit_Subscription_Model_Observer
                     }
 
                 }
+
+                //check if any error on save
+                $jsonRet = json_decode($ret, true);
+                if (isset($jsonRet['ROWNUMBER']) && $jsonRet['ROWNUMBER'])
+                {
+                    $error = false;
+                    Mage::getSingleton('core/session')->addSuccess('Repiit Subscription - Product sent to Repiit');
+                }
+                else {
+                    $error = true;
+                    Mage::getSingleton('core/session')->addError('Repiit Subscription - Error on saving product. Return code ' . $ret);
+                }
             }
         }
         catch (Exception $e)
         {
             Mage::log('Repiit Subscription - Error on saving product. Return code ' . $ret . '. Message ' . $e->getMessage() );
+            Mage::getSingleton('core/session')->addError('Repiit Subscription - Error on saving product. Return code ' . $ret . '. Message ' . $e->getMessage());
         }
     }
 
@@ -90,7 +104,7 @@ class Repiit_Subscription_Model_Observer
         $event = $observer->getEvent();
         $order = $event->getOrder();
 
-        if ($order->getSubscriptionId() || $order->getSubscriptionId <> 0) return; //already sent
+        //if ($order->getSubscriptionId() || $order->getSubscriptionId <> 0) return; //already sent
 
         $realOrderId = (string)$order->getIncrementId();
 

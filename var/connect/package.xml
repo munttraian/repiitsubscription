@@ -10,9 +10,9 @@
     <description>Subscription Extension</description>
     <notes>Still in Development</notes>
     <authors><author><name>Traian</name><user>admin</user><email>munt_traian@yahoo.com</email></author></authors>
-    <date>2016-11-21</date>
-    <time>15:57:05</time>
-    <contents><target name="magelocal"><dir name="app"><dir name="code"><dir name="local"><dir name="Repiit"><file name="Subscription" hash=""/></dir></dir></dir></dir></target></contents>
+    <date>2017-03-03</date>
+    <time>17:52:29</time>
+    <contents></contents>
     <compatible/>
     <dependencies><required><php><min>5.4.45</min><max>7.0.12</max></php></required></dependencies>
 </package>

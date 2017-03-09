@@ -12,7 +12,7 @@ class Repiit_Subscription_Model_Api
      */
     public function getAuthorizationKey($apiurl = "", $accountid = "", $key = "")
     {
-        return $_COOKIE['repiit_token']; //$this->getRequest()->getCookie('repiit_subscription');
+        return $_COOKIE['repiit_token'];
     }
 
     //get api url
@@ -21,7 +21,7 @@ class Repiit_Subscription_Model_Api
      */
     protected function getApiUrl()
     {
-        return "https://repiitportalmanager.azurewebsites.net/API/";
+        return Mage::getStoreConfig('repiitsubscription/api/url');
     }
 
     /*
@@ -31,6 +31,9 @@ class Repiit_Subscription_Model_Api
      */
     protected function curlGet($apiUrl, $key)
     {
+
+        $curlHost = Mage::getStoreConfig('repiitsubscription/api/curl_host');
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -50,7 +53,7 @@ class Repiit_Subscription_Model_Api
                 "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
                 "Content-Type: text/plain",
                 "Connection: keep-alive",
-                "Host: repiitportalmanager.azurewebsites.net"
+                "Host: $curlHost"
             ),
         ));
 
@@ -73,6 +76,9 @@ class Repiit_Subscription_Model_Api
      */
     protected function curlPost($apiUrl, $key)
     {
+
+        $curlHost = Mage::getStoreConfig('repiitsubscription/api/curl_host');
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -93,7 +99,7 @@ class Repiit_Subscription_Model_Api
                 "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
                 "Content-Type: application/json",
                 "Connection: keep-alive",
-                "Host: repiitportalmanager.azurewebsites.net"
+                "Host: $curlHost"
             ),
             CURLOPT_POST => 1,
             CURLOPT_POSTFIELDS => ""
@@ -118,6 +124,9 @@ class Repiit_Subscription_Model_Api
      */
     protected function curlPostBody($apiUrl,$key, $jsonData)
     {
+
+        $curlHost = Mage::getStoreConfig('repiitsubscription/api/curl_host');
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -138,7 +147,7 @@ class Repiit_Subscription_Model_Api
                 "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
                 "Content-Type: application/json",
                 "Connection: keep-alive",
-                "Host: repiitportalmanager.azurewebsites.net"
+                "Host: $curlHost"
             ),
         ));
 
@@ -161,6 +170,8 @@ class Repiit_Subscription_Model_Api
      */
     private function curlDelete($apiUrl, $key)
     {
+        $curlHost = Mage::getStoreConfig('repiitsubscription/api/curl_host');
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -180,7 +191,7 @@ class Repiit_Subscription_Model_Api
                 "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
                 "Content-Type: application/json",
                 "Connection: keep-alive",
-                "Host: repiitportalmanager.azurewebsites.net"
+                "Host: $curlHost"
             ),
         ));
 
@@ -204,6 +215,8 @@ class Repiit_Subscription_Model_Api
 
     protected function curlPut($apiUrl,$key, $jsonData)
     {
+        $curlHost = Mage::getStoreConfig('repiitsubscription/api/curl_host');
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -224,7 +237,7 @@ class Repiit_Subscription_Model_Api
                 "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
                 "Content-Type: application/json",
                 "Connection: keep-alive",
-                "Host: repiitportalmanager.azurewebsites.net"
+                "Host: $curlHost"
             ),
         ));
 

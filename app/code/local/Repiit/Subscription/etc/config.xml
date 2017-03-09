@@ -107,6 +107,8 @@
         <repiitsubscription>
             <api>
                 <js_selector_config>ul.configurable-swatch-list li a</js_selector_config>
+                <url>https://repiitportalmanager.azurewebsites.net/API/</url>
+                <curl_host>repiitportalmanager.azurewebsites.net</curl_host>
             </api>
         </repiitsubscription>
     </default>
