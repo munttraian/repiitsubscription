@@ -20,6 +20,13 @@ class Repiit_Subscription_Model_Observer
         $origData = $product->getOrigData();
         $data = $product->getData();
 
+        if (function_exists('curl_version')) {
+            Mage::getSingleton('core/session')->addSuccess('Curl exists');
+        }
+        else {
+            Mage::getSingleton('core/session')->addError('Curl not exists');
+        }
+
         $error = false;
 
         try {
@@ -29,22 +36,25 @@ class Repiit_Subscription_Model_Observer
                 $ret = ""; //api return code
 
                 $postData = array(
-                    "DATASET" => "DAT",
-                    "ITEMNUMBER" => $data['sku'],
-                    "ITEMTXT" => $data['name'],
-                    "ITEMTEXT" => $data['name'],
-                    "PRICE" => $data['subscription_price'],
-                    "RULEID" => $data['subscription_intervals'],
-                    "COSTPRICE" => 1,
-                    "UNIT" => 1,
-                    "DELIVERYTIME" => $data['subscription_deliverytime'],
-                    "SUPPLIER" => $product->getAttributeText('manufacturer')
+                    "DATASET" => Mage::getModel('repiit_subscription/api')->getDataset(),
+                    "ROWNUMBER" => 0,
+                    "LASTCHANGED" => date('Y-m-d\TH:i:s'),
+                    "ITEMNUMBER" => (string)$data['sku'],
+                    "ITEMTXT" => (string)$data['name'],
+                    "PRICE" => (float)$data['subscription_price'],
+                    "RULEID" => (string)(isset($data['subscription_intervals']) && $data['subscription_intervals'])?$data['subscription_intervals']:'0',
+                    "ISDELETED" => (int)0,
+                    "COSTPRICE" => (float)1,
+                    "UNIT" => (string)"1",
+                    "DELIVERYTIME" => (int)$data['subscription_deliverytime'],
+                    "SUPPLIER" => (string)$product->getAttributeText('manufacturer'),
+                    "GROUP_" => (string)"\u0002"
                 );
 
                 if ($data['subscription_id'])
                 {
                     //item exists, modify it
-                    $postData['rownumber'] = $data['subscription_id'];
+                    $postData['ROWNUMBER'] = (int)$data['subscription_id'];
 
                     //check if something has changed on subscription data
                     // if ($origData <> $data)
@@ -76,6 +86,9 @@ class Repiit_Subscription_Model_Observer
                     }
 
                 }
+
+                Mage::log('Message post to repiit ' . json_encode($postData));
+                Mage::getSingleton('core/session')->addSuccess('Message post to repiit ' . json_encode($postData));
 
                 //check if any error on save
                 $jsonRet = json_decode($ret, true);

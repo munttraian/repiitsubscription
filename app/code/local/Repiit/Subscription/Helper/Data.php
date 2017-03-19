@@ -17,7 +17,20 @@ class Repiit_Subscription_Helper_Data extends Mage_Core_Helper_Abstract {
      */
     public function getSubscriptionUrl()
     {
-        return Mage::getStoreConfig('repiitsubscription/api/redirect_url');
+        if(!Mage::getSingleton('customer/session')->isLoggedIn()) {
+            return Mage::getStoreConfig('repiitsubscription/api/redirect_url_nocustomer');
+        }
+
+        $customer = Mage::getSingleton('customer/session')->getCustomer();
+
+        $customerEmail = $customer->getEmail();
+
+        //$repiitCustomer = Mage::getModel('repiit_subscription/api_customer')->getCustomerByAttribute('EMAIL', $customerEmail);
+        $repiitCustomer = Mage::getModel('repiit_subscription/api_customer')->getCustomerByEmail($customerEmail);
+
+        if (is_array($repiitCustomer)) return Mage::getStoreConfig('repiitsubscription/api/redirect_url');
+
+        return Mage::getStoreConfig('repiitsubscription/api/redirect_url_nocustomer');
     }
 
     //get attribute group model by AttributeSetId and AttributeGroupName

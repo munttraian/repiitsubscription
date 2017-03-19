@@ -62,6 +62,31 @@ class Repiit_Subscription_Model_Api_Customer extends Repiit_Subscription_Model_A
 
     }
 
+    //get customer from repiit by email
+    /**
+     * @param $email
+     * @return bool|array
+     */
+    public function getCustomerByEmail($email)
+    {
+        $apiUrl = $this->getApiUrl() . "Customer/GetCustomerByEmail?email=" . $email;
+        $key = $this->getAuthorizationKey();
+
+        try {
+            $ret = $this->curlGet($apiUrl,$key);
+
+            $customer = json_decode($ret, true);
+
+            return $customer;
+        }
+        catch (Exception $e)
+        {
+            Mage::logException("Error getting customer by email" . $email . ". Message: " . $e->getMessage());
+
+            return false;
+        }
+    }
+
     //get customer by attribute
     /**
      * @param $attributeCode

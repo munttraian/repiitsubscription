@@ -1,7 +1,7 @@
 <?php
     $_product = Mage::registry('current_product');
     $helper = Mage::helper('Repiit_Subscription');
-
+echo "Test";
     if ($_product->getSubscriptionActiv() || $helper->childrenHasSubscriptionActiv($_product)) :
 
         $_helper = $this->helper('catalog/output');
@@ -31,11 +31,19 @@
         <script type="text/javascript">decorateTable('product-attribute-specs-table')</script>
     <?php endif;?>
 
-            <form action="<?php echo Mage::helper('Repiit_Subscription')->getSubscriptionUrl() ?>" method="post" id="product_subscription_form">
+            <form action="<?php echo Mage::helper('Repiit_Subscription')->getSubscriptionUrl() ?>" method="get" id="product_subscription_form">
                 <input type="hidden" name="partenerid" id="partenerid" value="" />
                 <input type="hidden" name="key" id="key" value="" />
 
+                <input type="hidden" name="DATASET" id="DATASET" value="<?php echo Mage::getModel('repiit_subscription/api')->getDataset() ?>" />
+                <input type="hidden" name="EMAIL" id="EMAIL" value="<?php if(Mage::getSingleton('customer/session')->isLoggedIn()) echo Mage::getSingleton('customer/session')->getCustomer()->getEmail(); ?>" />
+                <input type="hidden" name="ITEMNUMBER" id="ITEMNUMBER" value="<?php echo $_product->getSku() ?>" />
+
+                <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()) : ?>
+                <span><?php echo $this->__('You need to be logged in to subscribe') ?></span>
+                <?php else : ?>
                 <button type="submit" name="submit" class="button btn-cart" id="button_subscriptionrepiit" <?php echo ($_additional['subscription_activ']['value'] == 'Yes')?'':'disabled' ?>><?php echo $this->__('Subscribe') ?></button>
+                <?php endif; ?>
             </form>
 
             <script type="text/javascript">
@@ -100,6 +108,8 @@ if ($_product->getTypeId() == 'configurable') :
 
                 if (simpleSubscriptionProduct['subscription_activ'].value == 'Yes') jQuery('#button_subscriptionrepiit').attr('disabled', false);
                 else jQuery('#button_subscriptionrepiit').attr('disabled', true);
+
+                jQuery('#ITEMNUMBER').attr('value',simpleSubscriptionProduct['sku'].value);
             }
             else
             {

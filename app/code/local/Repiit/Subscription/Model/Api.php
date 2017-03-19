@@ -24,6 +24,21 @@ class Repiit_Subscription_Model_Api
         return Mage::getStoreConfig('repiitsubscription/api/url');
     }
 
+    //get navigator userAgent
+    public function getNavigatorUserAgent()
+    {
+        return isset($_COOKIE['navigator_useragent'])?$_COOKIE['navigator_useragent']:'';
+    }
+
+    //get dataset
+    /**
+     * @return string
+     */
+    public function getDataset()
+    {
+        return (string)Mage::getStoreConfig('repiitsubscription/api/dataset')?Mage::getStoreConfig('repiitsubscription/api/dataset'):'DAT';
+    }
+
     /*
      * Get with curl
      * Params: apiUrl - url request including get parameters
@@ -43,6 +58,11 @@ class Repiit_Subscription_Model_Api
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_DNS_USE_GLOBAL_CACHE => false,
+            CURLOPT_DNS_CACHE_TIMEOUT => 2,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST =>  0,
+            CURLOPT_RESOLVE => ["repiitportalmanager.azurewebsites.net:443:65.52.130.1","repiitportalmanager.azurewebsites.net:80:65.52.130.1"],
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
                 "Authorization: $key",
@@ -50,7 +70,7 @@ class Repiit_Subscription_Model_Api
                 "Accept: */*",
                 "Accept-Encoding: gzip, deflate, sdch",
                 "Accept-Language: en-US,en;q=0.8,ro;q=0.6,es;q=0.4,da;q=0.2",
-                "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+                "User-Agent: " . $this->getNavigatorUserAgent(),
                 "Content-Type: text/plain",
                 "Connection: keep-alive",
                 "Host: $curlHost"
@@ -60,11 +80,17 @@ class Repiit_Subscription_Model_Api
         $response = curl_exec($curl);
         $err = curl_error($curl);
 
+        $info = curl_getinfo($curl);
+
         curl_close($curl);
 
         if ($err) {
             return "cURL Error #:" . $err;
-        } else {
+        }
+        elseif (trim($response) == "") {
+            return "Reponse empty. " . json_encode($info);
+        }
+        else {
             return $response;
         }
     }
@@ -89,6 +115,7 @@ class Repiit_Subscription_Model_Api
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_RESOLVE => ["repiitportalmanager.azurewebsites.net:443:65.52.130.1"],
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_HTTPHEADER => array(
                 "authorization: $key",
@@ -96,7 +123,7 @@ class Repiit_Subscription_Model_Api
                 "Accept: */*",
                 "Accept-Encoding: gzip, deflate, sdch",
                 "Accept-Language: en-US,en;q=0.8,ro;q=0.6,es;q=0.4,da;q=0.2",
-                "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+                "User-Agent: " . $this->getNavigatorUserAgent(),
                 "Content-Type: application/json",
                 "Connection: keep-alive",
                 "Host: $curlHost"
@@ -108,11 +135,17 @@ class Repiit_Subscription_Model_Api
         $response = curl_exec($curl);
         $err = curl_error($curl);
 
+        $info = curl_getinfo($curl);
+
         curl_close($curl);
 
         if ($err) {
             return "cURL Error #:" . $err;
-        } else {
+        }
+        elseif (trim($response) == "") {
+            return "Reponse empty. " . json_encode($info);
+        }
+        else {
             return $response;
         }
     }
@@ -136,6 +169,7 @@ class Repiit_Subscription_Model_Api
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_RESOLVE => ["repiitportalmanager.azurewebsites.net:443:65.52.130.1"],
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => $jsonData,
             CURLOPT_HTTPHEADER => array(
@@ -144,7 +178,7 @@ class Repiit_Subscription_Model_Api
                 "Accept: */*",
                 "Accept-Encoding: gzip, deflate, sdch",
                 "Accept-Language: en-US,en;q=0.8,ro;q=0.6,es;q=0.4,da;q=0.2",
-                "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+                "User-Agent: " . $this->getNavigatorUserAgent(),
                 "Content-Type: application/json",
                 "Connection: keep-alive",
                 "Host: $curlHost"
@@ -154,11 +188,17 @@ class Repiit_Subscription_Model_Api
         $response = curl_exec($curl);
         $err = curl_error($curl);
 
+        $info = curl_getinfo($curl);
+
         curl_close($curl);
 
         if ($err) {
             return "cURL Error #:" . $err;
-        } else {
+        }
+        elseif (trim($response) == "") {
+            return "Reponse empty. " . json_encode($info);
+        }
+        else {
             return $response;
         }
     }
@@ -181,6 +221,7 @@ class Repiit_Subscription_Model_Api
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_RESOLVE => ["repiitportalmanager.azurewebsites.net:443:65.52.130.1"],
             CURLOPT_CUSTOMREQUEST => "DELETE",
             CURLOPT_HTTPHEADER => array(
                 "authorization: $key",
@@ -188,7 +229,7 @@ class Repiit_Subscription_Model_Api
                 "Accept: */*",
                 "Accept-Encoding: gzip, deflate, sdch",
                 "Accept-Language: en-US,en;q=0.8,ro;q=0.6,es;q=0.4,da;q=0.2",
-                "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+                "User-Agent: " . $this->getNavigatorUserAgent(),
                 "Content-Type: application/json",
                 "Connection: keep-alive",
                 "Host: $curlHost"
@@ -198,11 +239,19 @@ class Repiit_Subscription_Model_Api
         $response = curl_exec($curl);
         $err = curl_error($curl);
 
+        $info = curl_getinfo($curl);
+
         curl_close($curl);
+
+        Mage::log($response);
 
         if ($err) {
             return "cURL Error #:" . $err;
-        } else {
+        }
+        elseif (trim($response) == "") {
+            return "Reponse empty. " . json_encode($info);
+        }
+        else {
             return $response;
         }
     }
@@ -226,6 +275,7 @@ class Repiit_Subscription_Model_Api
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_RESOLVE => ["repiitportalmanager.azurewebsites.net:443:65.52.130.1"],
             CURLOPT_CUSTOMREQUEST => "PUT",
             CURLOPT_POSTFIELDS => $jsonData,
             CURLOPT_HTTPHEADER => array(
@@ -234,7 +284,7 @@ class Repiit_Subscription_Model_Api
                 "Accept: */*",
                 "Accept-Encoding: gzip, deflate, sdch",
                 "Accept-Language: en-US,en;q=0.8,ro;q=0.6,es;q=0.4,da;q=0.2",
-                "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+                "User-Agent: " . $this->getNavigatorUserAgent(),
                 "Content-Type: application/json",
                 "Connection: keep-alive",
                 "Host: $curlHost"
@@ -244,11 +294,19 @@ class Repiit_Subscription_Model_Api
         $response = curl_exec($curl);
         $err = curl_error($curl);
 
+        $info = curl_getinfo($curl);
+
         curl_close($curl);
+
+        Mage::log($response);
 
         if ($err) {
             return "cURL Error #:" . $err;
-        } else {
+        }
+        elseif (trim($response) == "") {
+            return "Reponse empty. " . json_encode($info);
+        }
+        else {
             return $response;
         }
     }

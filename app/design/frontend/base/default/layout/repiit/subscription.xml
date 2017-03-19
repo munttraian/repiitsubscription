@@ -17,4 +17,13 @@
                 <block type="repiit_subscription/product" name="repiit.subscription.button" as="repiitsubscriptionbutton" template="repiit/subscription/button_subscription.phtml" />
             </reference>
     </catalog_product_view>
+
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>js</type><name>repiit/cookies.js</name><params/></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="repiittoken" template="repiit/subscription/token.phtml" />
+        </reference>
+    </default>
 </layout>

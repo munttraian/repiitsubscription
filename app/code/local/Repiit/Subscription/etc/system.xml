@@ -8,7 +8,7 @@
     </tabs>
     <sections>
         <repiitsubscription translate="label" module="Repiit_Subscription">
-            <label>Reppit Subscriptions Settings</label>
+            <label>Repiit Subscriptions Settings</label>
             <tab>repiit</tab>
             <frontend_type>text</frontend_type>
             <sort_order>250</sort_order>
@@ -56,10 +56,18 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </redirect_url>
+                        <redirect_url_nocustomer translate="label">
+                            <label>Redirect Url No Customer</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </redirect_url_nocustomer>
                         <js_selector_config translate="label">
                             <label>Js path selector for configurable products</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>2</sort_order>
+                            <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -67,7 +75,7 @@
                         <url translate="label">
                             <label>Api Url</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>1</sort_order>
+                            <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
@@ -75,11 +83,19 @@
                         <curl_host>
                             <label>Curl Host</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>1</sort_order>
+                            <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </curl_host>
+                        <dataset>
+                            <label>Dataset used for magento</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dataset>
                     </fields>
                 </api>
             </groups>

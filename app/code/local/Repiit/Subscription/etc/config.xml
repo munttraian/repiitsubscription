@@ -109,6 +109,8 @@
                 <js_selector_config>ul.configurable-swatch-list li a</js_selector_config>
                 <url>https://repiitportalmanager.azurewebsites.net/API/</url>
                 <curl_host>repiitportalmanager.azurewebsites.net</curl_host>
+                <dataset>DAT</dataset>
+                <redirect_url>http://commitdk.com/Repiit/#customerLogin</redirect_url>
             </api>
         </repiitsubscription>
     </default>

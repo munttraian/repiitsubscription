@@ -85,6 +85,13 @@ class Repiit_Subscription_Block_Product extends Mage_Catalog_Block_Product {
                     }
                 }
             }
+
+            //add sku attribute
+            $data[$simpleId]['sku'] = array(
+                'label' => 'ITEMNUMBER',
+                'value' => $sProduct->getSku(),
+                'code'  => 'ITEMNUMBER'
+            );
         }
 
         return json_encode($data);

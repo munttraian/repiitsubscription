@@ -421,3 +421,49 @@ PHP message: PHP  10. Mage_Sales_Model_Service_Quote->submitOrder() /filespart/p
 PHP message: PHP  11. Mage_Core_Model_Resource_Transaction->save() /filespart/public_html/magento/app/code/core/Mage/Sales/Model/Service/Quote.php:189
 PHP message: PHP  12. Mage_Core_Model_Abstract->save() /filespart/public_html/magento/app/code/core/Mage/Core/Model/Resource/Transaction.php:151
 PHP message: PHP  13. Mage_Sales_Model_Order->_afterSave() /filespart/public_html/magento/app/code/core/Mage/C
+2017/03/13 07:20:14 [error] 636#636: *29 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Model/Observer.php on line 45
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run() /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run() /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Adminhtml_Catalog_ProductController->saveAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Core_Model_Abstract->save() /filespart/public_html/magento/app/code/core/Mage/Adminhtml/controllers/Catalog/ProductController.php:728
+PHP message: PHP   9. Mage_Catalog_Model_Product->_afterSave() /filespart/public_html/magento/app/code/core/Mage/Core/Model/Abstract.php:319
+PHP message: PHP  10. Mage_Core_Model_Abstract->_afterSave() /filespart/public_html/magento/app/code/core/Mage/Catalog/Model/Product.php:549
+PHP message: PHP  11. Mage::dispatchEvent() /filespart/public_html/magento/app/code/core/Mage/Core/Model/Abstract.php:466
+PHP message: PHP  12. Mage_Core_Model_App->dispatchEvent() /filespart/public_html/magento/app/Mage.php:448
+PHP message: PHP  13. Mage::getSingleton() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:1336
+PHP message: PHP  14. Mage::getModel() /filespart/publi
+2017/03/17 14:39:54 [error] 645#645: *3 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to a member function getCustomerByAttribute() on boolean in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Helper/Data.php on line 27
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run() /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run() /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Customer_AccountController->indexAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Core_Controller_Varien_Action->loadLayout() /filespart/public_html/magento/app/code/core/Mage/Customer/controllers/AccountController.php:111
+PHP message: PHP   9. Mage_Core_Controller_Varien_Action->generateLayoutBlocks() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:269
+PHP message: PHP  10. Mage_Core_Model_Layout->generateBlocks() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:344
+PHP message: PHP  11. Mage_Core_Model_Layout->generateBlocks() /filespart/public_html/magento/app/code/core/Mage/Core/Model/Layout.php:210
+PHP message: PHP  12. Mage_Core_Model_Layout->_generateAction() /filespart/public_html/magento/app/code/core/Mage/Core/Model/Layout.php:214
+PHP message: PHP  13. call_user_func_array:{/filespart/public_html/magento/app/code/core/Mage/Core/Model/Layout.php:324}(
+2017/03/17 14:45:34 [error] 645#645: *26 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Call to a member function getCustomerByAttribute() on boolean in /filespart/public_html/magento/app/code/local/Repiit/Subscription/Helper/Data.php on line 26
+PHP message: PHP Stack trace:
+PHP message: PHP   1. {main}() /filespart/public_html/magento/index.php:0
+PHP message: PHP   2. Mage::run() /filespart/public_html/magento/index.php:83
+PHP message: PHP   3. Mage_Core_Model_App->run() /filespart/public_html/magento/app/Mage.php:684
+PHP message: PHP   4. Mage_Core_Controller_Varien_Front->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Model/App.php:365
+PHP message: PHP   5. Mage_Core_Controller_Varien_Router_Standard->match() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php:172
+PHP message: PHP   6. Mage_Core_Controller_Varien_Action->dispatch() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php:254
+PHP message: PHP   7. Mage_Customer_AccountController->indexAction() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:418
+PHP message: PHP   8. Mage_Core_Controller_Varien_Action->loadLayout() /filespart/public_html/magento/app/code/core/Mage/Customer/controllers/AccountController.php:111
+PHP message: PHP   9. Mage_Core_Controller_Varien_Action->generateLayoutBlocks() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:269
+PHP message: PHP  10. Mage_Core_Model_Layout->generateBlocks() /filespart/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php:344
+PHP message: PHP  11. Mage_Core_Model_Layout->generateBlocks() /filespart/public_html/magento/app/code/core/Mage/Core/Model/Layout.php:210
+PHP message: PHP  12. Mage_Core_Model_Layout->_generateAction() /filespart/public_html/magento/app/code/core/Mage/Core/Model/Layout.php:214
+PHP message: PHP  13. call_user_func_array:{/filespart/public_html/magento/app/code/core/Mage/Core/Model/Layout.php:324}

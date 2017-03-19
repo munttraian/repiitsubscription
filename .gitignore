@@ -7,3 +7,5 @@ var/cache/*
 var/session/*
 var/report/*
 media/*
+access_log.log
+error_log.log
